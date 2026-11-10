@@ -1,3 +1,5 @@
+import MiProfile from '../assets/profile.png';
+
 function About(){
     return(
 <div>
@@ -52,7 +54,7 @@ function About(){
 
         <div className="lg:max-w-[50%] flex flex-col justify-center items-center">
   
-     <img src="./src/assets/profile.png" className="max-w-[70%] lg:max-w-[50%] flex justify-center items-center lg:-mt-15"/>
+     <img src={MiProfile} className="max-w-[70%] lg:max-w-[50%] flex justify-center items-center lg:-mt-15"/>
 
     <div  className="w-full l m-7 mt-3 flex items-center justify-center flex-col ">
             <div className=" gap-3 flex items-center justify-center flex-col " >

@@ -37,8 +37,8 @@ function Skill() {
               { 
                 Tech.map((element, index) => {
                   return (
-                    <li key={index} className="font-mono text-[13px] gap-1 list-none flex justify-center items-center pl-3 border-2 border-gray-400 bg-[#fff] pr-3 pt-1 pb-1 rounded-3xl">
-                      <img src={SkillIcon[index]} className="w-4 h-4"/>
+                    <li key={index} className="font-mono text-[13px] gap-1 list-none flex justify-center font-bold items-center pl-3 border-2 border-gray-600 bg-[#fff] pr-3 pt-1 pb-1 rounded-3xl">
+                      <img src={SkillIcon[index]} className="size-3.5"/>
                       <span>{element}</span>
                     </li>
                   )
