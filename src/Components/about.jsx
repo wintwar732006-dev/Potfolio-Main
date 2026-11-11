@@ -12,11 +12,11 @@ function About(){
         <div className="lg:flex lg:justify-end max-w-[80%] mx-auto mt-7 gap-2">
 
          <div className="flex flex-col">
-            <p className=" font-[poppins] text-[1rem] lg:text[2rem] ps-5"> I’m <span className="font-bold text-[1.1rem] text-gray-900">Hsu Wint Wah Htet</span> — a frontend developer dedicated to building polished,
+            <p className=" font-[poppins] text-[1rem] text-gray-700 lg:text[2rem] ps-5"> I’m <span className="font-bold text-[1.1rem] text-gray-800">Hsu Wint Wah Htet</span> — a frontend developer dedicated to building polished,
           responsive interfaces where clean design meets performant code.
-         As a largely <span className="font-bold text-[1.1rem] text-gray-900">self-taught builder</span>, I thrive on diving deep into frontend architectures, 
+         As a largely <span className="font-bold text-[1.1rem] text-gray-800">self-taught builder</span>, I thrive on diving deep into frontend architectures, 
          crafting modular UI systems from scratch, and collaborating under pressure in tech sprint environments 
-         to solve practical problems. Currently pursuing a dual degree in <span className="font-bold text-[1.1rem] text-gray-900">Computer Science at DGU and Law at YUDE</span>,
+         to solve practical problems. Currently pursuing a dual degree in <span className="font-bold text-[1.1rem] text-gray-800">Computer Science at DGU and Law at YUDE</span>,
          I bridge the gap between technical execution and structural thinking — combining algorithmic problem-solving with a
          conscious understanding of software governance.Whether engineering micro-interactions or architecting multi-device 
          layouts, my goal is always the same: delivering thoughtful, resilient digital products with zero visual bloat. </p>
@@ -63,15 +63,15 @@ function About(){
             </div>
 
 
-            <div className="flex gap-3 justify-center items-center">
+            <div className="flex gap-2 justify-center items-center max-w-[80%] mx-auto ">
 
                <div className="items-center justify-center flex flex-col px-6 py-1  m-2 bg-linear-[135deg,#00000033_40%,#efefef1a_90%,#FFFFFF33_100%] backdrop-blur   rounded-2xl">
-                <p className="text-gray-800 font-[poppins] font-bold text-xl">PROJECTS</p>
+                <p className="text-gray-800 font-[poppins] font-bold text-[0.8rem]">PROJECTS</p>
                 <p className="text-gray-900 font-[poppins] text-xl">3+</p>
                </div>
 
-               <div className="items-center justify-center flex flex-col px-6 py-1  m-2 bg-linear-[135deg,#00000033_40%,#efefef1a_90%,#FFFFFF33_100%] backdrop-blur  rounded-2xl">
-                <p className="text-gray-800 font-[poppins] font-bold text-xl">CERTIFICATES</p>
+               <div className="items-center justify-center flex flex-col px-6 py-1  m-2 bg-linear-[135deg,#00000033_40%,#efefef1a_90%,#FFFFFF33_100%] backdrop-blur   rounded-2xl">
+                <p className="text-gray-800 font-[poppins] font-bold text-[0.8rem]">CERTIFICATES</p>
                 <p className="text-gray-900 font-[poppins] text-xl">2</p>
                </div>
 

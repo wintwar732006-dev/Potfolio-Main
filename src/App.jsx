@@ -12,13 +12,13 @@ import Contact from './Components/contact.jsx'
 const App = () => {
 
     return(
-        <div className="relative overflow-hidden selection:bg-black selection:text-white"> 
+        <div className="relative overflow-hidden selection:bg-black selection:text-white max-w-7xl mx-auto min-[3440px]:max-w-[2800px]"> 
 
         <InteractiveDots 
         backgroundColor="#ffffff" 
-        dotColor="#8590a3" className="h-[100vw]"
+        dotColor="#e0e0e0" className="h-[100vw]"
       />  
-            <div className="relative z-10">
+            <div className="relative z-10 ">
                 <Nav/>
                 <Home/>
                 <MicroBar/>

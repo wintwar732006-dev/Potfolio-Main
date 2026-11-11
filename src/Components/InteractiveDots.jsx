@@ -1,60 +1,96 @@
 'use client';
 import { useEffect, useRef, useCallback } from 'react';
-const SmoothWavyCanvas = ({
-  backgroundColor = '#F8F6F0',
-  primaryColor = '45, 45, 45',
-  secondaryColor = '80, 80, 80',
-  accentColor = '120, 120, 120',
-  lineOpacity = 1,
-  animationSpeed = 0.004,
+
+const InteractiveDots = ({
+  backgroundColor = '#F0EEE6',
+  dotColor = '#666666',
+  gridSpacing = 30,
+  animationSpeed = 0.005,
+  removeWaveLine = true,
 }) => {
+  const containerRef = useRef(null);
   const canvasRef = useRef(null);
-  const requestIdRef = useRef(null);
   const timeRef = useRef(0);
+  const animationFrameId = useRef(null);
   const mouseRef = useRef({ x: 0, y: 0, isDown: false });
-  const energyFields = useRef([]);
+  const ripples = useRef([]);
+  const dotsRef = useRef([]);
+  const dprRef = useRef(1);
+
   const getMouseInfluence = (x, y) => {
     const dx = x - mouseRef.current.x;
     const dy = y - mouseRef.current.y;
     const distance = Math.sqrt(dx * dx + dy * dy);
-    const maxDistance = 200;
+    const maxDistance = 150;
     return Math.max(0, 1 - distance / maxDistance);
   };
-  const getEnergyFieldInfluence = (x, y, currentTime) => {
-    let totalIntensity = 0;
-    let totalDirectionX = 0;
-    let totalDirectionY = 0;
-    energyFields.current.forEach((field) => {
-      const age = currentTime - field.time;
-      const maxAge = 4000;
+
+  const getRippleInfluence = (x, y, currentTime) => {
+    let totalInfluence = 0;
+    ripples.current.forEach((ripple) => {
+      const age = currentTime - ripple.time;
+      const maxAge = 3000;
       if (age < maxAge) {
-        const dx = x - field.x;
-        const dy = y - field.y;
+        const dx = x - ripple.x;
+        const dy = y - ripple.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
-        const fieldRadius = (age / maxAge) * 300;
-        const fieldWidth = 100;
-        if (Math.abs(distance - fieldRadius) < fieldWidth) {
-          const fieldStrength = (1 - age / maxAge) * field.intensity;
-          const proximityToField =
-            1 - Math.abs(distance - fieldRadius) / fieldWidth;
-          const influence = fieldStrength * proximityToField * 0.6;
-          totalIntensity += influence;
-          if (distance > 0) {
-            totalDirectionX += (dx / distance) * influence;
-            totalDirectionY += (dy / distance) * influence;
-          }
+        const rippleRadius = (age / maxAge) * 300;
+        const rippleWidth = 60;
+        if (Math.abs(distance - rippleRadius) < rippleWidth) {
+          const rippleStrength = (1 - age / maxAge) * ripple.intensity;
+          const proximityToRipple =
+            1 - Math.abs(distance - rippleRadius) / rippleWidth;
+          totalInfluence += rippleStrength * proximityToRipple;
         }
       }
     });
-    const direction = Math.atan2(totalDirectionY, totalDirectionX);
-    return { intensity: Math.min(totalIntensity, 1), direction };
+    return Math.min(totalInfluence, 2);
   };
-  const resizeCanvas = useCallback(() => {
+
+  const initializeDots = useCallback(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  }, []);
+    const canvasWidth = canvas.clientWidth;
+    const canvasHeight = canvas.clientHeight;
+    const dots = [];
+    for (let x = gridSpacing / 2; x < canvasWidth; x += gridSpacing) {
+      for (let y = gridSpacing / 2; y < canvasHeight; y += gridSpacing) {
+        dots.push({
+          x,
+          y,
+          originalX: x,
+          originalY: y,
+          phase: Math.random() * Math.PI * 2,
+        });
+      }
+    }
+    dotsRef.current = dots;
+  }, [gridSpacing]);
+
+  const resizeCanvas = useCallback(() => {
+    const canvas = canvasRef.current;
+    const container = containerRef.current;
+    if (!canvas || !container) return;
+
+    const dpr = window.devicePixelRatio || 1;
+    dprRef.current = dpr;
+
+    // Window အမြင့်အစား Container ရဲ့ အမှန်တကယ်ရှိတဲ့ width/height ကို ယူပါသည်
+    const displayWidth = container.offsetWidth || window.innerWidth;
+    const displayHeight = container.offsetHeight || window.innerHeight;
+
+    canvas.width = displayWidth * dpr;
+    canvas.height = displayHeight * dpr;
+    canvas.style.width = displayWidth + 'px';
+    canvas.style.height = displayHeight + 'px';
+
+    const ctx = canvas.getContext('2d');
+    if (ctx) {
+      ctx.scale(dpr, dpr);
+    }
+    initializeDots();
+  }, [initializeDots]);
+
   const handleMouseMove = useCallback((e) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -62,174 +98,139 @@ const SmoothWavyCanvas = ({
     mouseRef.current.x = e.clientX - rect.left;
     mouseRef.current.y = e.clientY - rect.top;
   }, []);
+
   const handleMouseDown = useCallback((e) => {
     mouseRef.current.isDown = true;
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const rect = canvas.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    ripples.current.push({
+      x,
+      y,
+      time: Date.now(),
+      intensity: 2,
+    });
+    const now = Date.now();
+    ripples.current = ripples.current.filter(
+      (ripple) => now - ripple.time < 3000
+    );
   }, []);
+
   const handleMouseUp = useCallback(() => {
     mouseRef.current.isDown = false;
   }, []);
+
   const animate = useCallback(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
-    const currentTime = Date.now();
     timeRef.current += animationSpeed;
-    const width = canvas.width;
-    const height = canvas.height;
+    const currentTime = Date.now();
+    const canvasWidth = canvas.clientWidth;
+    const canvasHeight = canvas.clientHeight;
     ctx.fillStyle = backgroundColor;
-    ctx.fillRect(0, 0, width, height);
-    const numPrimaryLines = 35;
-    for (let i = 0; i < numPrimaryLines; i++) {
-      const yPos = (i / numPrimaryLines) * height;
-      const mouseInfl = getMouseInfluence(width / 2, yPos);
-      const { intensity: fieldIntensity, direction: fieldDirection } =
-        getEnergyFieldInfluence(width / 2, yPos, currentTime);
-      const amplitude =
-        45 + 25 * Math.sin(timeRef.current * 0.25 + i * 0.15) + mouseInfl * 25;
-      const frequency =
-        0.006 +
-        0.002 * Math.sin(timeRef.current * 0.12 + i * 0.08) +
-        mouseInfl * 0.001;
-      const speed =
-        timeRef.current * (0.6 + 0.3 * Math.sin(i * 0.12)) +
-        mouseInfl * timeRef.current * 0.3;
-      const thickness =
-        0.6 + 0.4 * Math.sin(timeRef.current + i * 0.25) + mouseInfl * 0.8;
-      const opacity =
-        (0.12 +
-          0.08 * Math.abs(Math.sin(timeRef.current * 0.3 + i * 0.18)) +
-          mouseInfl * 0.15) *
-        lineOpacity;
+    ctx.fillRect(0, 0, canvasWidth, canvasHeight);
+
+    dotsRef.current.forEach((dot) => {
+      const mouseInfluence = getMouseInfluence(dot.originalX, dot.originalY);
+      const rippleInfluence = getRippleInfluence(
+        dot.originalX,
+        dot.originalY,
+        currentTime
+      );
+      const totalInfluence = mouseInfluence + rippleInfluence;
+      dot.x = dot.originalX;
+      dot.y = dot.originalY;
+      const baseDotSize = 2;
+      const dotSize =
+        baseDotSize +
+        totalInfluence * 6 +
+        Math.sin(timeRef.current + dot.phase) * 0.5;
+      const opacity = Math.max(
+        0.3,
+        0.6 +
+          totalInfluence * 0.4 +
+          Math.abs(Math.sin(timeRef.current * 0.5 + dot.phase)) * 0.1
+      );
       ctx.beginPath();
-      ctx.lineWidth = thickness;
-      ctx.strokeStyle = `rgba(${primaryColor}, ${opacity})`;
-      for (let x = 0; x < width; x += 2) {
-        const localMouseInfl = getMouseInfluence(x, yPos);
-        const y =
-          yPos +
-          amplitude * Math.sin(x * frequency + speed) +
-          localMouseInfl * Math.sin(timeRef.current * 2 + x * 0.008) * 15;
-        if (x === 0) {
-          ctx.moveTo(x, y);
-        } else {
-          ctx.lineTo(x, y);
+      ctx.arc(dot.x, dot.y, dotSize, 0, Math.PI * 2);
+      const red = Number.parseInt(dotColor.slice(1, 3), 16);
+      const green = Number.parseInt(dotColor.slice(3, 5), 16);
+      const blue = Number.parseInt(dotColor.slice(5, 7), 16);
+      ctx.fillStyle = `rgba(${red}, ${green}, ${blue}, ${opacity})`;
+      ctx.fill();
+    });
+
+    if (!removeWaveLine) {
+      ripples.current.forEach((ripple) => {
+        const age = currentTime - ripple.time;
+        const maxAge = 3000;
+        if (age < maxAge) {
+          const progress = age / maxAge;
+          const radius = progress * 300;
+          const alpha = (1 - progress) * 0.3 * ripple.intensity;
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(100, 100, 100, ${alpha})`;
+          ctx.lineWidth = 2;
+          ctx.arc(ripple.x, ripple.y, radius, 0, 2 * Math.PI);
+          ctx.stroke();
+          const innerRadius = progress * 150;
+          const innerAlpha = (1 - progress) * 0.2 * ripple.intensity;
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(120, 120, 120, ${innerAlpha})`;
+          ctx.lineWidth = 1;
+          ctx.arc(ripple.x, ripple.y, innerRadius, 0, 2 * Math.PI);
+          ctx.stroke();
         }
-      }
-      ctx.stroke();
+      });
     }
-    const numSecondaryLines = 25;
-    for (let i = 0; i < numSecondaryLines; i++) {
-      const xPos = (i / numSecondaryLines) * width;
-      const mouseInfl = getMouseInfluence(xPos, height / 2);
-      const { intensity: fieldIntensity, direction: fieldDirection } =
-        getEnergyFieldInfluence(xPos, height / 2, currentTime);
-      const amplitude =
-        40 + 20 * Math.sin(timeRef.current * 0.18 + i * 0.14) + mouseInfl * 20;
-      const frequency =
-        0.007 +
-        0.003 * Math.cos(timeRef.current * 0.14 + i * 0.09) +
-        mouseInfl * 0.002;
-      const speed =
-        timeRef.current * (0.5 + 0.25 * Math.cos(i * 0.16)) +
-        mouseInfl * timeRef.current * 0.25;
-      const thickness =
-        0.5 + 0.3 * Math.sin(timeRef.current + i * 0.35) + mouseInfl * 0.7;
-      const opacity =
-        (0.1 +
-          0.06 * Math.abs(Math.sin(timeRef.current * 0.28 + i * 0.2)) +
-          mouseInfl * 0.12) *
-        lineOpacity;
-      ctx.beginPath();
-      ctx.lineWidth = thickness;
-      ctx.strokeStyle = `rgba(${secondaryColor}, ${opacity})`;
-      for (let y = 0; y < height; y += 2) {
-        const localMouseInfl = getMouseInfluence(xPos, y);
-        const x =
-          xPos +
-          amplitude * Math.sin(y * frequency + speed) +
-          localMouseInfl * Math.sin(timeRef.current * 2 + y * 0.008) * 12;
-        if (y === 0) {
-          ctx.moveTo(x, y);
-        } else {
-          ctx.lineTo(x, y);
-        }
-      }
-      ctx.stroke();
-    }
-    const numAccentLines = 15;
-    for (let i = 0; i < numAccentLines; i++) {
-      const offset = (i / numAccentLines) * width * 1.5 - width * 0.25;
-      const amplitude = 30 + 15 * Math.cos(timeRef.current * 0.22 + i * 0.12);
-      const frequency =
-        0.01 + 0.004 * Math.sin(timeRef.current * 0.16 + i * 0.1);
-      const phase = timeRef.current * (0.4 + 0.2 * Math.sin(i * 0.13));
-      const thickness = 0.4 + 0.25 * Math.sin(timeRef.current + i * 0.28);
-      const opacity =
-        (0.06 + 0.04 * Math.abs(Math.sin(timeRef.current * 0.24 + i * 0.15))) *
-        lineOpacity;
-      ctx.beginPath();
-      ctx.lineWidth = thickness;
-      ctx.strokeStyle = `rgba(${accentColor}, ${opacity})`;
-      const steps = 100;
-      for (let j = 0; j <= steps; j++) {
-        const progress = j / steps;
-        const baseX = offset + progress * width;
-        const baseY =
-          progress * height + amplitude * Math.sin(progress * 6 + phase);
-        const mouseInfl = getMouseInfluence(baseX, baseY);
-        const x =
-          baseX +
-          mouseInfl * Math.sin(timeRef.current * 1.5 + progress * 6) * 8;
-        const y =
-          baseY +
-          mouseInfl * Math.cos(timeRef.current * 1.5 + progress * 6) * 8;
-        if (j === 0) {
-          ctx.moveTo(x, y);
-        } else {
-          ctx.lineTo(x, y);
-        }
-      }
-      ctx.stroke();
-    }
-    requestIdRef.current = requestAnimationFrame(animate);
-  }, [
-    backgroundColor,
-    primaryColor,
-    secondaryColor,
-    accentColor,
-    lineOpacity,
-    animationSpeed,
-  ]);
+    animationFrameId.current = requestAnimationFrame(animate);
+  }, [backgroundColor, dotColor, removeWaveLine, animationSpeed]);
+
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    const container = containerRef.current;
+    if (!canvas || !container) return;
+
     resizeCanvas();
-    const handleResize = () => resizeCanvas();
-    window.addEventListener('resize', handleResize);
+
+    // ResizeObserver သုံးထားတဲ့အတွက် parent container အမြင့်ပြောင်းတိုင်း dots တွေ အလိုအလျောက် အပြည့်ဖြည့်ပေးပါမယ်
+    const resizeObserver = new ResizeObserver(() => {
+      resizeCanvas();
+    });
+    resizeObserver.observe(container);
+
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('mousedown', handleMouseDown);
     window.addEventListener('mouseup', handleMouseUp);
     animate();
+
     return () => {
-      window.removeEventListener('resize', handleResize);
-      canvas.removeEventListener('mousemove', handleMouseMove);
-      canvas.removeEventListener('mousedown', handleMouseDown);
-      canvas.removeEventListener('mouseup', handleMouseUp);
-      if (requestIdRef.current) {
-        cancelAnimationFrame(requestIdRef.current);
-        requestIdRef.current = null;
+      resizeObserver.disconnect();
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mousedown', handleMouseDown);
+      window.removeEventListener('mouseup', handleMouseUp);
+      if (animationFrameId.current) {
+        cancelAnimationFrame(animationFrameId.current);
+        animationFrameId.current = null;
       }
       timeRef.current = 0;
-      energyFields.current = [];
+      ripples.current = [];
+      dotsRef.current = [];
     };
   }, [animate, resizeCanvas, handleMouseMove, handleMouseDown, handleMouseUp]);
+
   return (
     <div
+      ref={containerRef}
       className="absolute inset-0 w-full h-full overflow-hidden"
       style={{ backgroundColor }}>
       <canvas ref={canvasRef} className="block w-full h-full" />
     </div>
   );
 };
-export default SmoothWavyCanvas;
+
+export default InteractiveDots;

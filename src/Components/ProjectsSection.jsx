@@ -1,9 +1,10 @@
 import React from "react";
 import { projects } from "../Components/projectsData"; // 
+import Project1 from '../assets/project1.png'; 
 
 function ProjectsSection(){
     return(
-        <div className="max-w-[70%] justify-center items-center  mx-auto">
+        <div className="max-w-[90%] justify-center items-center  mx-auto">
              <h1 className="mt-10 font-mono text-gray-600 text-[0.9rem] ">&lt;projects/&gt;</h1>
              <h1 className="font-[poppins] mt-4 text-3xl font-bold text-gray-900">Project ShowCase</h1>
 
@@ -36,16 +37,19 @@ function ProjectsSection(){
 
                         <div className="flex w-full mt-5">
 
-                                <div className="flex justify-center  items-center rounded-xl py-1 text-black mx-2 gap-2 px-3 bg-white">
-                                  <a href={project.live} className="font-[poppins] font-extrabold text-[0.6rem] lg:text-[0.7rem]">
-                                Live Demo -&gt;
+                                <a
+                                   href={project.links.live}
+                                   target="_blank"
+                                   rel="noopener noreferrer"
+                                   className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-3 py-1 font-['Poppins'] text-[0.6rem] font-extrabold text-black transition-all hover:bg-neutral-200 lg:text-[0.7rem]"
+                                >
+                                     Live Demo &rarr;
                                 </a>
-                                </div>
 
                         
                                 <div className="flex justify-center  items-center py-1 rounded-xl text-black mx-2 gap-2 px-3 bg-white">
                                     <img src="./src/assets/github.png" className="w-4 h-4"/>
-                                    <button><a href={project.githubUrl} className="font-[poppins] font-extrabold text-[0.6rem] lg:text-[0.7rem]">
+                                    <button><a href={project.links.githubUrl} className="font-[poppins] font-extrabold text-[0.6rem] lg:text-[0.7rem]">
                                     GitHub
                                     </a></button>
                                     </div>
