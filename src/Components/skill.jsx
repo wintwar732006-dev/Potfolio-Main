@@ -1,5 +1,12 @@
 import Skills from "../hook/icons.js";
 import react from '../assets/react.png'
+import C from '../assets/C++.png';
+import Git from '../assets/git.png'; 
+import GitHub from '../assets/github.png'; 
+import VSCode from '../assets/vsCode.png'; 
+import Cursor from '../assets/cursor.png'; 
+import Framer from '../assets/framer.png'; 
+import Figma from '../assets/figma.png'; 
 
 const { HTML5, CSS3, TailwindCss, JavaScript, React } = Skills;
 
@@ -59,14 +66,14 @@ function Skill() {
 
           <div className="flex flex-wrap max-w-[90%] mx-auto">
             <div className="flex mt-8 mr-1 ml-1 px-4 items-center h-8 rounded-4xl justify-center gap-1 bg-white border-2 border-gray-600">
-              <img src="./public/c++.png" className="w-3.5 h-3.5" />
+              <img src={C} className="w-3.5 h-3.5" />
               <span className="font-mono text-black text-[0.8rem] flex font-bold">
                 C++
               </span>
             </div>
 
             <div className="flex mt-8 mr-1 ml-1 px-4 items-center h-8 rounded-4xl justify-center gap-1 bg-white border-2 border-gray-600">
-              <img src="../assets/git.png" className="w-3.5 h-3.5" />
+              <img src={Git} className="w-3.5 h-3.5" />
               <span className="font-mono text-black text-[0.8rem] flex font-bold">
                 Git
               </span>
@@ -74,7 +81,7 @@ function Skill() {
 
             <div className="flex mt-8 mr-1 ml-1 px-4 items-center h-8 rounded-4xl justify-center gap-1 bg-white border-2 border-gray-600">
               <img
-                src="/src/assets/github.png"
+                src={GitHub}
                 className="w-3.5 h-3.5"
               />
               <span className="font-mono text-black text-[0.8rem] flex font-bold">
@@ -84,7 +91,7 @@ function Skill() {
 
             <div className="flex mt-8 mr-1 ml-1 px-4 items-center h-8 rounded-4xl justify-center gap-1 bg-white border-2 border-gray-600">
               <img
-                src="/src/assets/vsCode.png"
+                src={VSCode}
                 className="w-3.5 h-3.5"
               />
               <span className="font-mono text-black text-[0.8rem] flex font-bold">
@@ -94,7 +101,7 @@ function Skill() {
 
             <div className="flex mt-8 mr-1 ml-1 px-4 items-center h-8 rounded-4xl justify-center gap-1 bg-white border-2 border-gray-600">
               <img
-                src="./src/assets/cursor.png"
+                src={Cursor}
                 className="w-3.5 h-3.5"
               />
               <span className="font-mono text-black text-[0.8rem] flex font-bold">
@@ -104,7 +111,7 @@ function Skill() {
 
             <div className="flex mt-8 mr-1 ml-1 px-4 items-center h-8 rounded-4xl justify-center gap-1 bg-white border-2 border-gray-600">
               <img
-                src=".//src/assets/framer.png"
+                src={Framer}
                 className="w-3.5 h-3.5"
               />
               <span className="font-mono text-black text-[0.8rem] flex font-bold">
@@ -114,7 +121,7 @@ function Skill() {
 
             <div className="flex mt-8 mr-1 ml-1 px-4 items-center h-8 rounded-4xl justify-center gap-1 bg-white border-2 border-gray-600">
               <img
-                src="./src/assets/figma.png"
+                src={Figma}
                 className="w-3.5 h-3.5"
               />
               <span className="font-mono text-black text-[0.8rem] flex font-bold">
