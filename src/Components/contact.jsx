@@ -1,10 +1,46 @@
-import React, { useState } from 'react'; 
+import React, { useRef, useState } from 'react'; 
 import Arrow from '../assets/top-right.png'; 
 import Send from '../assets/send.png'; 
+import emailjs from '@emailjs/browser'
 
 
 
 function Contact(){
+
+   const form = useRef(); 
+   const [loading, setLoading] = useState(false); 
+   const [status, setStatus] = useState(''); 
+
+   const sendEmail = (e) => {
+    e.preventDefault(); 
+    setLoading(true); 
+    setStatus(''); 
+
+    const SERVICE_ID = 'service_irnt90u'; 
+    const TEMPLATE_ID = 'template_nx7kfsf'; 
+    const PUBLIC_KEY = 'oyfrWNoZy-eGWJSG5'; 
+
+    emailjs.sendForm(
+      SERVICE_ID, 
+      TEMPLATE_ID, form.current, {
+        publicKey: PUBLIC_KEY,
+       })
+       .then(
+        () => {
+          setLoading(false); 
+          setStatus('Message sent successfully!'); 
+          form.current.reset(); 
+        }, 
+        (error) => {
+          setLoading(false); 
+          console.error('FAILED...', error.text); 
+          alert('Error details: ' + (error.text || JSON.stringify(error))); 
+          setStatus('Failed to send message. Please try again.'); 
+        }
+       ); 
+   }; 
+
+
     const [copied, setCopied] = useState(false); 
     const emailAddress = "wintwar732006@gmail.com"; 
 
@@ -132,28 +168,58 @@ function Contact(){
 
             <div className="mx-auto border border-black lg:w-full w-full px-7 py-6 bg-black font-mono  ">  {/*  start of input card*/}
 
-          <label for="name" className="flex font-[poppins] text-white mb-0 text-[0.8rem] lg:text-[0.9rem]">Your Name</label>
-          <input id="name" type="text" placeholder="Hsu Wint War Htet" className="font-[poppins] placeholder:text-xs lg:placeholder:text-sm px-4 py-2 lg:py-4 mt-2 rounded-xl bg-white border border-gray-400 w-full"></input>
+          <form ref={form} onSubmit={sendEmail} >
+           
+            <div>
+              <label for="name" className="flex font-[poppins] text-white mb-0 text-[0.8rem] lg:text-[0.9rem]">Your Name</label>
+             <input id="name" type="text" name="user_name" required placeholder="Hsu Wint War Htet" className="focus:ring-2 focus:ring-gray-600 font-[poppins] placeholder:text-xs lg:placeholder:text-sm px-4 py-2 lg:py-4 mt-2 rounded-xl bg-white border border-gray-400 w-full"></input>
+            </div>
 
-          <label for="mail" className="flex font-mono text-white text-[0.8rem] mt-5  lg:text-[0.9rem]">Your Email</label>
-          <input id="mail" type="mail" placeholder="wintwar732006@gmail.com" className="placeholder:text-xs lg:placeholder:text-sm px-4 lg:py-4 py-2 mt-2 rounded-xl bg-white border border-gray-400 w-full"></input>
+          <div>
+            <label for="mail" className="flex font-[poppins] text-white text-[0.8rem] mt-5  lg:text-[0.9rem]">Your Email</label>
+          <input id="mail" type="email" name="user_email"  placeholder="abcd1234@gmail.com" className="font-[poppins] focus:ring-2 focus:ring-gray-600 placeholder:text-xs lg:placeholder:text-sm px-4 lg:py-4 py-2 mt-2 rounded-xl bg-white border border-gray-400 w-full"></input>
+          </div>
 
-          <label  className="flex font-mono text-white text-[0.8rem] mt-5 lg:text-[0.9rem]">Your Message</label>
-          <textarea  type placeholder="Anything you want to say..."   className=" placeholder:text-xs lg:placeholder:text-sm px-4 py-4 mt-2 rounded-xl bg-white border border-gray-400 w-full border-none"></textarea>
+          <div>
+            <label  className="flex font-[poppins] text-white text-[0.8rem] mt-5 lg:text-[0.9rem]">Your Message</label>
+          <textarea  name="message"  placeholder="Anything you want to say..."   className="font-[poppins] focus:ring-2 focus:ring-gray-600 resize-none placeholder:text-xs lg:placeholder:text-sm px-4 py-4 mt-2 rounded-xl bg-white border border-gray-400 w-full border-none"></textarea>
+          </div>
            
 
 
            <hr className="my-5 text-gray-600"/>
 
-          <div className=" text-white">
-                       <span className="font-mono  mx-3 text-gray-300 text-[0.8rem] lg:text-[0.9rem]">* Replies typically within 24 hours</span>
-                       <div className="right-0 lg:mt-5 lg:right-0">
-                         <button className="flex w-fit lg:mr-0 justify-start items-center  gap-1 text-[0.7rem] lg:text-[0.9rem] text-black bg-white px-3 py-2 font-bold my-5 rounded-2xl ">Send Message<img src={Send} className="lg:size-3 size-2.5 items-center justify-center font-bold"/></button>
+          <div className="border-t border-gray-800 pt-3">
+          <p className="text-xs md:text-s text-gray-400 mb-3">* Replies typically within 24 hours</p>
+          <button
+            type="submit"
+            disabled={loading}
+            className="flex items-center gap-2 px-4 py-2 bg-white text-black font-semibold rounded-lg hover:bg-gray-200 transition-colors cursor-pointer disabled:opacity-50"
+          >
+            {loading ? 'Sending...' : 'Send Message'}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={2}
+              stroke="currentColor"
+              className="w-4 h-4"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.874L5.999 12zm0 0h7.5" />
+            </svg>
+          </button>
+        </div>
 
-                       </div>
-          </div>
+        {status && (
+          <p className="text- text-gray-400 mt-2">{status}</p>
+        )}
 
+          </form>
+          
             </div>   {/*  end of input card*/}
+
+
+
 
             </div> {/* parent end of two cards */}
 
