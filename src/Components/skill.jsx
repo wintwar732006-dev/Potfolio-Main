@@ -66,7 +66,7 @@ function Skill() {
             </div>
 
             <div className="flex mt-8 mr-1 ml-1 px-4 items-center h-8 rounded-4xl justify-center gap-1 bg-white border-2 border-gray-600">
-              <img src="/src/assets/git.png" className="w-3.5 h-3.5" />
+              <img src="../assets/git.png" className="w-3.5 h-3.5" />
               <span className="font-mono text-black text-[0.8rem] flex font-bold">
                 Git
               </span>
