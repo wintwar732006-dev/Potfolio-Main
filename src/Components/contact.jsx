@@ -89,38 +89,38 @@ function Contact(){
 
              <div className="flex flex-wrap max-w-full my-4 mx-auto gap-3">
 
-              <div className="flex gap-2 px-4 py-2 border border-gray-500/80 rounded-xl items-center justify-center w-fit font-bold font-mono text-[0.7rem] lg:text-[0.9rem] cursor-pointer hover:text-gray-900/90">
+              <div className="flex gap-2 px-4 py-2 bg-[#ffffff] border  border-gray-500/80 rounded-xl items-center justify-center w-fit font-bold font-mono text-[0.7rem] lg:text-[0.9rem] cursor-pointer hover:text-gray-900/90">
                 <a href="https://github.com/wintwar732006-dev" target="_blank">GitHub</a>
                 <img src={Arrow} className="size-2"/>
               </div>
 
 
-              <div className="flex gap-2 px-4 py-2 border border-gray-500/80 rounded-xl items-center justify-center w-fit font-bold font-mono text-[0.7rem] lg:text-[0.9rem] cursor-pointer hover:text-gray-900/90">
+              <div className="flex gap-2 px-4 py-2 bg-[#ffffff] border border-gray-500/80 rounded-xl items-center justify-center w-fit font-bold font-mono text-[0.7rem] lg:text-[0.9rem] cursor-pointer hover:text-gray-900/90">
                 <a href="https://www.linkedin.com/in/hsu-wint-war-htet-9a2ab941b?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank">LinkedIn</a>
                 <img src={Arrow} className="size-2"/>
               </div>
 
-              <div className="flex gap-2 px-4 py-2 border border-gray-500/80 rounded-xl items-center justify-center w-fit font-bold font-mono text-[0.7rem] lg:text-[0.9rem] cursor-pointer hover:text-gray-900/90">
+              <div className="flex gap-2 px-4 py-2 bg-[#ffffff] border border-gray-500/80 rounded-xl items-center justify-center w-fit font-bold font-mono text-[0.7rem] lg:text-[0.9rem] cursor-pointer hover:text-gray-900/90">
                 <a href="https://www.facebook.com/profile.php?id=61579376662131&mibextid=wwXIfr&mibextid=wwXIfr" target="_blank">Facebook</a>
                 <img src={Arrow} className="size-2 hover:transition-rotate(45deg)"/>
               </div>
 
-              <div className="flex gap-2 px-4 py-2 border border-gray-500/80 rounded-xl items-center justify-center w-fit font-bold font-mono text-[0.7rem] lg:text-[0.9rem] cursor-pointer hover:text-gray-900/90">
+              <div className="flex gap-2 px-4 py-2 bg-[#ffffff] border border-gray-500/80 rounded-xl items-center justify-center w-fit font-bold font-mono text-[0.7rem] lg:text-[0.9rem] cursor-pointer hover:text-gray-900/90">
                 <a href="https://t.me/itzMe_HwwH" target="_blank">Telegram</a>
                 <img src={Arrow} className="size-2 hover:transition-rotate(45deg)"/>
               </div>
 
-              <div className="flex gap-2 px-4 py-2 border border-gray-500/80 rounded-xl items-center justify-center w-fit font-bold font-mono text-[0.7rem] lg:text-[0.9rem] cursor-pointer hover:text-gray-900/90">
+              <div className="flex gap-2 px-4 py-2 bg-[#ffffff] border border-gray-500/80 rounded-xl items-center justify-center w-fit font-bold font-mono text-[0.7rem] lg:text-[0.9rem] cursor-pointer hover:text-gray-900/90">
                 <a href="viber://chat?number=%2B959671020431" target="_blank">Viber</a>
                 <img src={Arrow} className="size-2 hover:transition-rotate(45deg)"/>
               </div>
 
-              <div className="flex gap-2 px-4 py-2 border border-gray-500/80 rounded-xl items-center justify-center w-fit font-bold font-mono text-[0.7rem] lg:text-[0.9rem] cursor-pointer hover:text-gray-900/90">
+              <div className="flex gap-2 px-4 py-2 bg-[#ffffff] border border-gray-500/80 rounded-xl items-center justify-center w-fit font-bold font-mono text-[0.7rem] lg:text-[0.9rem] cursor-pointer hover:text-gray-900/90">
                 <a href="https://mail.google.com/mail/?view=cm&fs=1&to=wintwar732006@gmail.com" target="_blank">Email</a>
                 <img src={Arrow} className="size-2 hover:transition-rotate(45deg)"/>
               </div>
 
-              <div className="flex gap-2 px-4 py-2 border border-gray-500/80 rounded-xl items-center justify-center w-fit font-bold font-mono text-[0.7rem] lg:text-[0.9rem] cursor-pointer hover:text-gray-900/90">
+              <div className="flex gap-2 px-4 py-2 bg-[#ffffff] border border-gray-500/80 rounded-xl items-center justify-center w-fit font-bold font-mono text-[0.7rem] lg:text-[0.9rem] cursor-pointer hover:text-gray-900/90">
                 <a href="tel:+959671020431" target="_blank">Phone</a>
                 <img src={Arrow} className="size-2 hover:transition-rotate(45deg)"/>
               </div>
