@@ -1,5 +1,6 @@
 import React, { useState } from 'react'; 
 import Arrow from '../assets/top-right.png'; 
+import Send from '../assets/send.png'; 
 
 
 
@@ -90,38 +91,38 @@ function Contact(){
 
               <div className="flex gap-2 px-4 py-2 border border-gray-500/80 rounded-xl items-center justify-center w-fit font-bold font-mono text-[0.7rem] lg:text-[0.9rem] cursor-pointer hover:text-gray-900/90">
                 <a href="https://github.com/wintwar732006-dev" target="_blank">GitHub</a>
-                <img src="./src/assets/top-right.png" className="size-2"/>
+                <img src={Arrow} className="size-2"/>
               </div>
 
 
               <div className="flex gap-2 px-4 py-2 border border-gray-500/80 rounded-xl items-center justify-center w-fit font-bold font-mono text-[0.7rem] lg:text-[0.9rem] cursor-pointer hover:text-gray-900/90">
                 <a href="https://www.linkedin.com/in/hsu-wint-war-htet-9a2ab941b?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank">LinkedIn</a>
-                <img src="./src/assets/top-right.png" className="size-2"/>
+                <img src={Arrow} className="size-2"/>
               </div>
 
               <div className="flex gap-2 px-4 py-2 border border-gray-500/80 rounded-xl items-center justify-center w-fit font-bold font-mono text-[0.7rem] lg:text-[0.9rem] cursor-pointer hover:text-gray-900/90">
                 <a href="https://www.facebook.com/profile.php?id=61579376662131&mibextid=wwXIfr&mibextid=wwXIfr" target="_blank">Facebook</a>
-                <img src="./src/assets/top-right.png" className="size-2 hover:transition-rotate(45deg)"/>
+                <img src={Arrow} className="size-2 hover:transition-rotate(45deg)"/>
               </div>
 
               <div className="flex gap-2 px-4 py-2 border border-gray-500/80 rounded-xl items-center justify-center w-fit font-bold font-mono text-[0.7rem] lg:text-[0.9rem] cursor-pointer hover:text-gray-900/90">
                 <a href="https://t.me/itzMe_HwwH" target="_blank">Telegram</a>
-                <img src="./src/assets/top-right.png" className="size-2 hover:transition-rotate(45deg)"/>
+                <img src={Arrow} className="size-2 hover:transition-rotate(45deg)"/>
               </div>
 
               <div className="flex gap-2 px-4 py-2 border border-gray-500/80 rounded-xl items-center justify-center w-fit font-bold font-mono text-[0.7rem] lg:text-[0.9rem] cursor-pointer hover:text-gray-900/90">
                 <a href="viber://chat?number=%2B959671020431" target="_blank">Viber</a>
-                <img src="./src/assets/top-right.png" className="size-2 hover:transition-rotate(45deg)"/>
+                <img src={Arrow} className="size-2 hover:transition-rotate(45deg)"/>
               </div>
 
               <div className="flex gap-2 px-4 py-2 border border-gray-500/80 rounded-xl items-center justify-center w-fit font-bold font-mono text-[0.7rem] lg:text-[0.9rem] cursor-pointer hover:text-gray-900/90">
                 <a href="https://mail.google.com/mail/?view=cm&fs=1&to=wintwar732006@gmail.com" target="_blank">Email</a>
-                <img src="./src/assets/top-right.png" className="size-2 hover:transition-rotate(45deg)"/>
+                <img src={Arrow} className="size-2 hover:transition-rotate(45deg)"/>
               </div>
 
               <div className="flex gap-2 px-4 py-2 border border-gray-500/80 rounded-xl items-center justify-center w-fit font-bold font-mono text-[0.7rem] lg:text-[0.9rem] cursor-pointer hover:text-gray-900/90">
-                <a href="tel:+959755803598" target="_blank">Phone</a>
-                <img src="./src/assets/top-right.png" className="size-2 hover:transition-rotate(45deg)"/>
+                <a href="tel:+959671020431" target="_blank">Phone</a>
+                <img src={Arrow} className="size-2 hover:transition-rotate(45deg)"/>
               </div>
 
              </div>
@@ -147,7 +148,7 @@ function Contact(){
           <div className=" text-white">
                        <span className="font-mono  mx-3 text-gray-300 text-[0.8rem] lg:text-[0.9rem]">* Replies typically within 24 hours</span>
                        <div className="right-0 lg:mt-5 lg:right-0">
-                         <button className="flex w-fit lg:mr-0 justify-start items-center  gap-1 text-[0.7rem] lg:text-[0.9rem] text-black bg-white px-3 py-2 font-bold my-5 rounded-2xl ">Send Message<img src={Arrow} className="lg:size-3 size-2.5 items-center justify-center font-bold"/></button>
+                         <button className="flex w-fit lg:mr-0 justify-start items-center  gap-1 text-[0.7rem] lg:text-[0.9rem] text-black bg-white px-3 py-2 font-bold my-5 rounded-2xl ">Send Message<img src={Send} className="lg:size-3 size-2.5 items-center justify-center font-bold"/></button>
 
                        </div>
           </div>
