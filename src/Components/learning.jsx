@@ -91,7 +91,7 @@ export default function LearningJourney() {
         <h2 className="font-[poppins] mt-4 text-3xl font-bold lg:mx-auto -mx-4 text-gray-900">
           2026 Journey &amp; Milestones
         </h2>
-        <p className=" font-[poppins] text-[1rem] text-gray-700 lg:text[2rem] ps-5 mt-5">
+        <p className=" font-[poppins] text-[1rem] text-gray-700 lg:text[2rem] ps-5 mt-5 mx-auto">
           From crafting custom interfaces on Framer to architecting responsive React applications and engineering towards a full-stack horizon.
         </p>
       </div>
