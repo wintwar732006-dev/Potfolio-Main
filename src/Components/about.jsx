@@ -1,16 +1,48 @@
 import MiProfile from '../assets/profile.png';
+import { motion } from 'motion/react'
+import { useState, useEffect } from "react"; 
 
 function About(){
+
+    const [isDesktop, setIsDesktop] = useState(() => 
+    typeof window !== "undefined" ? window.innerWidth >= 768 : true
+     ); 
+
+    useEffect(() => {
+        const checkScreen = () => setIsDesktop(window.innerWidth >= 768); 
+        checkScreen(); 
+        window.addEventListener("resize", checkScreen); 
+        return () => window.removeEventListener("resize", checkScreen); 
+    }, []); 
+
+    const collisionSpring = {
+        type: "spring", 
+        stiffness: 220, 
+        damping: 14, 
+        mass: 1.1, 
+    }; 
+
     return(
-<div id="about" className="max-w-full lg:max-w-[80%] mx-auto">
+      <motion.div
+       initial={{opacity: 0, y:24}}
+        whileInView={{opacity: 1, y:0}}
+        viewport={{once: true, amount:0.2}}
+        transition={{duration: 0.6}}
+      id="about" className="overflow-x-hidden max-w-full lg:max-w-[80%] mx-auto">
 
         <p className="mt-10 ml-4 font-mono text-gray-600 text-[0.9rem] ">&lt;BACKGROUND/&gt;</p>
         <h1 className=" ml-4 font-[poppins] mt-4 text-3xl font-bold text-gray-900 max-w-[80%]">About Me
         </h1>
 
-        <div className="lg:flex lg:justify-center  max-w-full  mx-auto mt-7 gap-2">
+        <div className="px-6 my-7 grid grid-cols-1 md:grid-cols-2 gap-3 items-center md:max-w-full mx-auto max-w-full">
 
-         <div className="flex flex-col lg:max-w-full max-w-full mx-auto">
+         <motion.div 
+         
+         initial = {isDesktop ? {opacity: 0, x:-80} : {opacity: 0, y:30}}
+         whileInView = {isDesktop ? {opacity: 1, x: 0} : {opacity: 1, y: 0}}
+         viewport = {{once: true, amount: 0.25}}
+         transition = {collisionSpring}
+         className="flex flex-col lg:max-w-full max-w-full mx-auto">
             <p className=" font-[poppins] text-[1rem] text-gray-700 lg:text[2rem] px-5"> I’m <span className="font-bold text-[1.1rem] text-gray-800">Hsu Wint Wah Htet</span> — a frontend developer dedicated to building polished,
           responsive interfaces where clean design meets performant code.
          As a largely <span className="font-bold text-[1.1rem] text-gray-800">self-taught builder</span>, I thrive on diving deep into frontend architectures, 
@@ -47,12 +79,18 @@ function About(){
         <div>
             <span></span>
         </div>
-       </div>
+       </motion.div>
 
 
-        <div className="lg:max-w-[35%] flex flex-col mx-auto lg:justify-center lg:items-center mt-10 ml-10">
+        <motion.div 
+        
+        initial = {isDesktop ? {opacity: 0, x: 80} : {opacity:0, y: 30}}
+        whileInView = {isDesktop ? {opacity: 1, x: 0 } : { opacity: 1, y: 0 }}
+        viewport = {{once: true, amount: 0.25}}
+        transition = {collisionSpring}
+        className="lg:max-w-[95%] flex flex-col mx-auto lg:justify-center lg:items-center mt-10 ml-10">
   
-     <img src={MiProfile} className="max-w-[70%] mt-10 mx-auto lg:max-w-[70%] flex justify-center items-center lg:-mt-15"/>
+     <img src={MiProfile} className="max-w-[20%] mt-10 mx-auto lg:max-w-[70%] flex justify-center items-center lg:-mt-15"/>
 
     <div  className="w-full  m-7 mb-0 mt-3 mx-auto flex items-center justify-center flex-col ">
             <div className=" gap-3 flex items-center justify-center flex-col " >
@@ -88,13 +126,13 @@ function About(){
     </div>
 
    
-        </div>
+        </motion.div>
 
         </div>
 
        
 
-</div>
+</motion.div>
     ); 
 }
 export default About

@@ -14,7 +14,10 @@ import Footer from './Components/footer.jsx'
 const App = () => {
 
     return(
-        <div className="relative overflow-hidden selection:bg-black selection:text-white max-w-7xl mx-auto min-[3440px]:max-w-[2800px]"> 
+        <div 
+        
+        
+        className="relative overflow-hidden selection:bg-black selection:text-white max-w-7xl mx-auto min-[3440px]:max-w-[2800px]"> 
 
         <InteractiveDots 
         backgroundColor="#ffffff" 
@@ -22,13 +25,13 @@ const App = () => {
       />  
             <div className="relative z-10 ">
                 <Nav/>
-                <Home id="home"/>
+                <Home/>
                 <MicroBar/>
-                <Skill id="skill"/>
-                <About id="about"/>
-                <ProjectsSection id="project"/>
+                <Skill/>
+                <About/>
+                <ProjectsSection/>
                 <LearningJourney/>
-                <Contact id="contact"/>
+                <Contact/>
 
                 <Footer/>
             </div>

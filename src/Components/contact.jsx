@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import Arrow from '../assets/top-right.png'; 
 import Send from '../assets/send.png'; 
 import emailjs from '@emailjs/browser'
+import { motion } from 'motion/react'
 
 
 
@@ -53,13 +54,18 @@ function Contact(){
     
 
     return(
-        <div id="contact" className="max-w-[80%] mx-auto ">
+        <motion.div 
+        initial={{opacity: 0, y:24}}
+        whileInView={{opacity: 1, y:0}}
+        viewport={{once: true, amount:0.2}}
+        transition={{duration: 0.6}}
+        id="contact" className="max-w-[80%] mx-auto ">
 
             <p  className="mt-10  font-mono text-gray-600 text-[0.9rem] ">&lt;contact/&gt;</p>
             <h1 className=" font-[poppins] mt-4 text-3xl font-extrabold text-gray-900 max-w-[80%]">Contact Me</h1>
             <p className="mt-13  font-mono font-extrabold text-gray-900 text-[0.8rem] lg:text-[1rem]">DIRECT CONTACT</p>
 
-                <div className = "lg:mx-0 mx-auto mt-4  flex justify-center lg:justify-start  items-center gap-2.5 px-4 py-2 rounded-sm   text-black-300 text-[0.7rem] lg:text-[0.9rem] font-extrabold font-mono w-fit">
+                <div className = "lg:mx-0 mx-auto mt-4 md:mx-0 md:justify-start  flex justify-center lg:justify-start m  items-center gap-2.5 px-4 py-2 rounded-sm   text-black-300 text-[0.7rem] lg:text-[0.9rem] font-extrabold font-mono w-fit">
 
              <span className="relative flex size-2">
                 <span className="animate-ping absolute  inline-flex size-2 rounded-full bg-emerald-400 opacity-75"></span>
@@ -76,7 +82,7 @@ function Contact(){
               
                             <div className="justify-start items-start flex flex-col max-w-[90%]   "> {/* start of first card*/}
 
-            <div className="flex gap-3 top-0 left-0 px-3 py-3 ml-5 bg-black/40 backdrop-blur border-2 border-gray-400 text-black font-extrabold rounded-2xl  items-center justify-center mb-4"> {/* Copy Button start */}
+            <div className="flex md:justify-center md:items-center gap-3 top-0 left-0 px-3 py-3 bg-white border-gray-500/80 backdrop-blur border text-black font-extrabold rounded-2xl  items-center justify-center mb-4"> {/* Copy Button start */}
 
 
             <span className="flex font-mono font-bold text-[0.8rem] lg:[1rem]">{emailAddress}</span>
@@ -191,7 +197,10 @@ function Contact(){
 
           <div className="border-t border-gray-800 pt-3">
           <p className="text-xs md:text-s text-gray-400 mb-3">* Replies typically within 24 hours</p>
-          <button
+          <motion.button
+            whileHover={{scale: 1.04, y:-2}}
+            whileTap = {{scale: 0.94}}
+            transition = {{type: "spring", stiffness: 450, damping: 18}}
             type="submit"
             disabled={loading}
             className="flex items-center gap-2 px-4 py-2 bg-white text-black font-semibold rounded-lg hover:bg-gray-200 transition-colors cursor-pointer disabled:opacity-50"
@@ -207,7 +216,7 @@ function Contact(){
             >
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.874L5.999 12zm0 0h7.5" />
             </svg>
-          </button>
+          </motion.button>
         </div>
 
         {status && (
@@ -223,7 +232,7 @@ function Contact(){
 
             </div> {/* parent end of two cards */}
 
-        </div>
+        </motion.div>
     ); 
 }
 

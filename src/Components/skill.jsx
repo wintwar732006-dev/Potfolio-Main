@@ -7,6 +7,7 @@ import VSCode from '../assets/vsCode.png';
 import Cursor from '../assets/cursor.png'; 
 import Framer from '../assets/framer.png'; 
 import Figma from '../assets/figma.png'; 
+import { motion } from 'motion/react'
 
 const { HTML5, CSS3, TailwindCss, JavaScript, React } = Skills;
 
@@ -24,7 +25,13 @@ const SkillIcon = [
 
 function Skill() {
   return (
-    <div id="skill" >
+    <motion.div 
+    
+    initial={{opacity: 0, y:24}}
+    whileInView={{opacity: 1, y:0}}
+    viewport={{once: true, amount:0.2}}
+        transition={{duration: 0.6}}
+    id="skill" >
       <p className="mt-10 lg:ml-[10%] font-mono text-gray-600 text-[0.9rem] ml-4">
         &lt;CAPABILITIES/&gt;
       </p>
@@ -131,7 +138,7 @@ function Skill() {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

@@ -1,3 +1,6 @@
+import { motion } from 'motion/react'
+
+
 function Home(){
     return(
 <div className="flex flex-col " id="home">
@@ -7,7 +10,7 @@ function Home(){
 
     <h1 className="text-black font-bold lg:text-8xl text-6xl mt-10 font-[poppins] my-6">Hsu Wint Wah Htet</h1>
 
-    <h5 className="mt-5 text-[18px] font-medium font-black text-black-200 md:text-xl">Frontend developer and UI enthusiast dedicated to bridging clean,<br/>
+    <h5 className="mt-5 text-[18px]  font-medium text-black-200 md:text-xl">Frontend developer and UI enthusiast dedicated to bridging clean,<br/>
         minimalist design with performant, accessible code. Focused on <br/>
         building responsive web interfaces, interactive components, and <br/>
         scalable digital experiences.</h5>
@@ -17,8 +20,17 @@ function Home(){
     </div>
 
         <div   className="lg:max-w-[80%] max-w-full flex gap-5 mx-auto lg:ml-[15%]">
-            <button className="flex items-start justify-start px-7 py-3 rounded-5xl  bg-black text-white rounded-3xl font-medium ml-0 hover:bg-gray-800">Contact Me</button>
-            <button className="flex  items-start justify-start font-medium  border border-gray-600 px-10 py-3 rounded-3xl hover:bg-gray-100">Projects</button>
+            <motion.button
+            whileHover = {{ scale: 1.04, y: -2}}
+            whileTap = {{ scale: 0.94}}
+            transition = {{ type: "spring", stiffness: 450, damping: 18}}
+            className="flex items-start justify-start px-7 py-3 rounded-5xl  bg-black text-white rounded-3xl font-medium ml-0 hover:bg-gray-800"><a href="#contact">Contact Me</a></motion.button>
+            <motion.button
+            whileHover = {{ scale: 1.04, y: -2}}
+            whileTap = {{scale: 0.94}}
+            transition = {{type: "spring", stiffness: 450, damping: 18}}
+             className="flex  items-start justify-start font-medium  border border-gray-600 px-10 py-3 rounded-3xl hover:bg-gray-100"><a href="#project">Projects</a>
+             </motion.button>
         </div>
 </div>
     ); 

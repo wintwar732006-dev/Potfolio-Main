@@ -1,6 +1,7 @@
-import { motion } from 'motion/react'
+import { motion, useScroll, useSpring } from 'motion/react'
 import mobilePic from '../assets/mobile.png' 
 import { useState, useEffect } from 'react'; 
+
 
 const category = [
     { name: "Home", id: 'home' },  
@@ -13,6 +14,13 @@ const category = [
 const NavItems = () => {
     const [activeId, setActiveId] = useState("home");
     const [mobileOpen, setMobileOpen] = useState(false);
+
+    const { scrollYProgress } = useScroll(); 
+    const scaleX = useSpring(scrollYProgress, {
+        stiffness: 120, 
+        damping: 30, 
+        restDelta: 0.001
+    })
     
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -42,6 +50,12 @@ const NavItems = () => {
 
     return (
         <div className="w-full pt-3 flex flex-col items-center font[poppins] ">
+
+         <motion.div 
+         style={{scaleX}}
+         className="fixed top-0 left-0 right-0 h-0.75 bg-black origin-left z-50"
+         />
+
             <nav className='flex justify-between items-center w-full h-15 px-6 m-auto shadow-lg z-50 border-black/20 border rounded-[30px] max-w-[80%] fixed top-3 backdrop-blur-md'>
                 <h3 className="font-mono font-extrabold font text-zinc-700 text-[1rem] lg:text-[1.2rem]">&lt;HWWH/&gt;</h3>
                 
@@ -50,18 +64,22 @@ const NavItems = () => {
                         const isActive = activeId === item.id;
 
                         return (
-                            <li key={item.id}>
+                            <li key={item.id} className="relative">
                                 <a
                                     href={`#${item.id}`}
                                     onClick={() => setActiveId(item.id)}
-                                    className={`px-3.5 py-1.5 rounded-xl transition-all duration-300 cursor-pointer select-none ${
-                                        isActive
-                                            ? "font-bold bg-zinc-200/80 dark:bg-zinc-800 text-black dark:text-white shadow-sm"
-                                            : "font-medium text-zinc-500 hover:text-black dark:hover:text-white hover:bg-zinc-100/70 dark:hover:bg-zinc-900/70"
+                                    className={`relative z-10 px-3.5 py-1.5 rounded-xl transition-colors duration-200 cursor-pointer select-none block ${
+                                        isActive ? "font-bold text-black" : "font-medium text-zinc-500 hover-text-black"
                                     }`}
                                 >
                                     {item.name}
                                 </a>
+
+                                {isActive && (
+                                    <motion.div layoutId = "activeNavPill"
+                                    transition = {{type: "spring", stiffness: 380, damping: 30}}
+                                    className="absolute inset-0 bg-zinc-200/80 rounded-xl shadow-sm z-0"/>
+                                )}
                             </li>
                         );
                     })}
@@ -114,7 +132,7 @@ const NavItems = () => {
                             }}
                             className={`text-[0.9rem] px-3.5 py-1.5 rounded-xl transition-all duration-300 block ${
                                 isActive
-                                    ? "font-bold bg-zinc-200/90 text-black shadow-sm"
+                                    ? "font-bold bg-zinc-200 text-black shadow-sm"
                                     : "font-medium text-zinc-600 hover:text-black hover:bg-zinc-200/50"
                             }`}
                         >

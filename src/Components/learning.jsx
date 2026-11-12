@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from 'motion/react'
 
 const milestones = [
   {
@@ -82,7 +83,12 @@ export default function LearningJourney() {
   };
 
   return (
-    <section id="Journey" className="w-full mx-auto  lg:mx-auto  px-4 py-16 text-zinc-100 lg:max-w-[80%] max-w-full">
+    <motion.section
+    initial={{opacity: 0, y:24}}
+    whileInView={{opacity: 1, y:0}}
+    viewport={{once: true, amount:0.2}}
+    transition={{duration: 0.6}}
+    id="Journey" className="w-full mx-auto  lg:mx-auto  px-4 py-16 text-zinc-100 lg:max-w-[80%] max-w-full">
       {/* Section Header */}
       <div className="mb-10 space-y-2">
         <div className="mt-10 lg:mx-auto   mx-1 font-mono text-gray-600 text-[0.9rem] ">
@@ -102,7 +108,14 @@ export default function LearningJourney() {
           const isOpen = openId === item.id;
 
           return (
-            <div
+            <motion.div
+            initial = {{opacity: 0, x: 50}}
+            whileInView = {{ opacity: 1, x: 0}}
+            viewport = {{once: true, amount: 0.25}}
+            transition = {{
+              duration: 1, 
+              ease: [0.22, 1, 0.36, 1],
+            }}
               key={item.id}
               className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
                 isOpen
@@ -122,11 +135,11 @@ export default function LearningJourney() {
                     <span
                       className={`text-[11px] font-medium tracking-wide uppercase px-2.5 py-0.5 rounded-lg border ${
                         item.status === "In Progress"
-                          ? "bg-teal-800/20 text-teal-400 border-teal-500/30 animate-pulse"
+                          ? "bg-gray-300/20 text-black border-gray-500/30 animate-pulse"
                           : item.status === "Sprint"
-                          ? "bg-amber-400/20 text-amber-400 border-amber-500/30 animate-pulse"
+                          ? "bg-gray-300/20 text-black border-gray-500/30 animate-pulse"
                           : item.status === "Accelerated"
-                          ? "bg-cyan-500/20 text-cyan-500 border-cyan-500/30 animate-pulse"
+                          ? "bg-gray-300/20 text-black border-gray-500/30 animate-pulse"
                           : "bg-black text-white border-zinc-700/70"
                       }`}
                     >
@@ -196,10 +209,10 @@ export default function LearningJourney() {
                   </div>
                 </div>
               )}
-            </div>
+            </motion.div>
           );
         })}
       </div>
-    </section>
+    </motion.section>
   );
 }
