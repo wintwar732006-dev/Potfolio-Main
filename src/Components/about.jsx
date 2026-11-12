@@ -76,7 +76,7 @@ function About(){
 
             </div>
 
-           <div className="max-w-[90%] flex justify-center items-center mt-5">
+           <div className="max-w-[90%] flex justify-center items-center mt-5 none lg:block">
                  <p className="font-mono text-xl text-zinc-700 "><i><b>"Aesthetic discipline is not the addition of decorative layers, 
                         but the rigorous subtraction of visual noise."</b>
                         </i></p>
