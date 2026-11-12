@@ -97,7 +97,7 @@ export default function LearningJourney() {
       </div>
 
       {/* Accordion Cards */}
-      <div className="space-y-3.5 max-w-full lg:max-w-[80%] mx-4 lg:mx-auto ">
+      <div className="space-y-3.5">
         {milestones.toReversed().map((item) => {
           const isOpen = openId === item.id;
 
