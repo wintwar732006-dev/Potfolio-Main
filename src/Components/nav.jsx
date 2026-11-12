@@ -7,13 +7,11 @@ const category = [
     { name: "Skills", id: 'skill' },  
     { name: "About", id: 'about' },  
     { name: "Project", id: 'project' },  
-    { name: "Journey", id: 'journey' },  
+    { name: "Journey", id: 'Journey' },  
 ]; 
 
 const NavItems = () => {
-    // Section active အတွက် state
     const [activeId, setActiveId] = useState("home");
-    // Mobile menu အဖွင့်/အပိတ် အတွက် state
     const [mobileOpen, setMobileOpen] = useState(false);
     
     useEffect(() => {
@@ -126,7 +124,6 @@ const NavItems = () => {
                 );
             })}
 
-            {/* Mobile menu ထဲမှာ Contact link ပါ တစ်ခါတည်း ထည့်ချင်ရင် */}
             <li className="mt-1">
                 <a
                     href="#contact"
