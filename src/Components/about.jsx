@@ -51,7 +51,7 @@ function About(){
        </div>
 
 
-        <div className="lg:max-w-[35%] flex flex-col justify-center items-center mt-10 ml-10">
+        <div className="lg:max-w-[35%] mx-auto flex flex-col justify-center items-center mt-10 ml-10">
   
      <img src={MiProfile} className="max-w-[60%] mt-10 lg:max-w-[70%] flex justify-center items-center lg:-mt-15"/>
 
