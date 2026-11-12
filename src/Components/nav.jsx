@@ -41,8 +41,8 @@ const NavItems = () => {
     }
 
     return (
-        <div className="w-full pt-3 flex flex-col items-center font[poppins]">
-            <nav className='flex justify-between items-center w-full h-15 px-6 m-auto shadow-lg border-black/20 border rounded-[30px] max-w-[80%] fixed top-3 backdrop-blur-md'>
+        <div className="w-full pt-3 flex flex-col items-center font[poppins] ">
+            <nav className='flex justify-between items-center w-full h-15 px-6 m-auto shadow-lg z-50 border-black/20 border rounded-[30px] max-w-[80%] fixed top-3 backdrop-blur-md'>
                 <h3 className="font-[poppins] font-extrabold font text-black-600 text-[0.9rem]">&lt;HWWH/&gt;</h3>
                 
                 <ul className="hidden md:flex items-center justify-center gap-4 h-full font-[poppins] text-[0.9rem]">

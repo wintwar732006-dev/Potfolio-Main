@@ -2,17 +2,16 @@ import MiProfile from '../assets/profile.png';
 
 function About(){
     return(
-<div id="about" className="max-w-full lg:max-w-[80%]">
+<div id="about" className="max-w-full lg:max-w-[80%] mx-auto">
 
-        <p className="mt-10 lg:ml-[10%] ml-4 font-mono text-gray-600 text-[0.9rem] ">&lt;BACKGROUND/&gt;</p>
-        <h1 className="lg:ml-[10%] ml-4 font-[poppins] mt-4 text-3xl font-bold text-gray-900 max-w-[80%]">Crafting thoughtful high performance interfaces at the 
-            intersection of discipline and engineering
+        <p className="mt-10 ml-4 font-mono text-gray-600 text-[0.9rem] ">&lt;BACKGROUND/&gt;</p>
+        <h1 className=" ml-4 font-[poppins] mt-4 text-3xl font-bold text-gray-900 max-w-[80%]">About Me
         </h1>
 
-        <div className="lg:flex lg:justify-end lg:max-w-[80%] max-w-full lg:mx-auto mx-3 mt-7 gap-2">
+        <div className="lg:flex lg:justify-center  max-w-full  mx-auto mt-7 gap-2">
 
-         <div className="flex flex-col lg:max-w-[80%] max-w-full mx-auto">
-            <p className=" font-[poppins] text-[1rem] text-gray-700 lg:text[2rem] ps-5"> I’m <span className="font-bold text-[1.1rem] text-gray-800">Hsu Wint Wah Htet</span> — a frontend developer dedicated to building polished,
+         <div className="flex flex-col lg:max-w-full max-w-full mx-auto">
+            <p className=" font-[poppins] text-[1rem] text-gray-700 lg:text[2rem] px-5"> I’m <span className="font-bold text-[1.1rem] text-gray-800">Hsu Wint Wah Htet</span> — a frontend developer dedicated to building polished,
           responsive interfaces where clean design meets performant code.
          As a largely <span className="font-bold text-[1.1rem] text-gray-800">self-taught builder</span>, I thrive on diving deep into frontend architectures, 
          crafting modular UI systems from scratch, and collaborating under pressure in tech sprint environments 
