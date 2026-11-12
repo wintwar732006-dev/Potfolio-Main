@@ -88,7 +88,7 @@ function About(){
         whileInView = {isDesktop ? {opacity: 1, x: 0 } : { opacity: 1, y: 0 }}
         viewport = {{once: true, amount: 0.25}}
         transition = {collisionSpring}
-        className="lg:max-w-[95%] flex flex-col mx-auto lg:justify-center lg:items-center mt-10 ml-10">
+        className="lg:max-w-[95%] flex flex-col mx-auto lg:justify-center lg:items-center mt-10 lg:ml-10">
   
      <img src={MiProfile} className="max-w-[80%] mt-10 mx-auto lg:max-w-[70%] flex justify-center items-center lg:-mt-15"/>
 
