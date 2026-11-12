@@ -1,14 +1,15 @@
 import React from "react";
 import { projects } from "../Components/projectsData"; // 
 import Project1 from '../assets/project1.png'; 
+import Project2 from '../assets/project2.png'
 
 function ProjectsSection(){
     return(
-        <div id="project" className="lg:max-w-[80%] max-w-full justify-center items-center  mx-auto">
+        <div id="project" className="lg:max-w-[80%] max-w-full justify-center items-center   mx-4 lg:mx-auto">
              <h1 className="mt-10 font-mono text-gray-600 text-[0.9rem] ">&lt;projects/&gt;</h1>
              <h1 className="font-[poppins] mt-4 text-3xl font-bold text-gray-900">Project ShowCase</h1>
 
-           <div className="grid grid-cols-1 md:grid-cols-1  lg:grid-cols-2 lg:p-10  p-5 gap-10">
+           <div className="grid grid-cols-1 md:grid-cols-1 lg:px-20  lg:grid-cols-2 lg:p-10  p-5 gap-10">
              {projects.map((project) => (
                 <div key={project.id} className="p-5 as bg-black/90  text-white rounded-2xl border border-gray-600  ">
 
