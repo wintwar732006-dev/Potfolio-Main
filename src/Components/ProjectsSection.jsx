@@ -4,7 +4,7 @@ import Project1 from '../assets/project1.png';
 
 function ProjectsSection(){
     return(
-        <div id="project" className="max-w-[80%] justify-center items-center  mx-auto">
+        <div id="project" className="lg:max-w-[80%] max-w-full justify-center items-center  mx-auto">
              <h1 className="mt-10 font-mono text-gray-600 text-[0.9rem] ">&lt;projects/&gt;</h1>
              <h1 className="font-[poppins] mt-4 text-3xl font-bold text-gray-900">Project ShowCase</h1>
 
