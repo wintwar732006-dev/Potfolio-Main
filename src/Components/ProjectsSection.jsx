@@ -2,6 +2,7 @@ import React from "react";
 import { projects } from "../Components/projectsData"; // 
 import Project1 from '../assets/project1.png'; 
 import Project2 from '../assets/project2.png'
+import github from '../assets/github.png'
 
 function ProjectsSection(){
     return(
@@ -49,7 +50,7 @@ function ProjectsSection(){
 
                         
                                 <div className="flex justify-center  items-center py-1 rounded-xl text-black mx-2 gap-2 px-3 bg-white">
-                                    <img src="./src/assets/github.png" className="w-4 h-4"/>
+                                    <img src={github} className="w-4 h-4"/>
                                     <button><a href={project.links.githubUrl} className="font-[poppins] font-extrabold text-[0.6rem] lg:text-[0.7rem]">
                                     GitHub
                                     </a></button>

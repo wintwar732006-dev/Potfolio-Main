@@ -46,7 +46,6 @@ function About(){
          </div>
         <div>
             <span></span>
-            <p>Open for Collaborations</p>
         </div>
        </div>
 
