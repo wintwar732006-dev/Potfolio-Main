@@ -82,7 +82,7 @@ export default function LearningJourney() {
   };
 
   return (
-    <section id="Journey" className="w-full  mx-auto px-4 py-16 text-zinc-100 lg:max-w-[80%] max-w-[80%]">
+    <section id="Journey" className="w-full  mx-4 lg:mx-auto px-4 py-16 text-zinc-100 lg:max-w-[80%] max-w-full">
       {/* Section Header */}
       <div className="mb-10 space-y-2">
         <div className="mt-10 lg:mx-auto -mx-4   font-mono text-gray-600 text-[0.9rem] ">
