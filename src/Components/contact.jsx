@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'; 
+import React, { useRef, useState, useEffect } from 'react'; 
 import Arrow from '../assets/top-right.png'; 
 import Send from '../assets/send.png'; 
 import emailjs from '@emailjs/browser'
@@ -7,6 +7,23 @@ import { motion } from 'motion/react'
 
 
 function Contact(){
+
+  const [isDesktop, setIsDesktop] = useState(() => 
+  typeof window !== "undefined" ? window.innerWidth >= 768 : true
+  )
+
+  useEffect(() => {
+    const checkScreen = () => setIsDesktop(window.innerWidth >= 768);
+    window.addEventListener("resize", checkScreen); 
+    return () => window.removeEventListener("resize", checkScreen); 
+  }, []); 
+
+  const collisionSpring = {
+    type: "spring", 
+    stiffness: 220, 
+    damping: 13, 
+    mass: 1.1,
+  }
 
    const form = useRef(); 
    const [loading, setLoading] = useState(false); 
@@ -57,7 +74,7 @@ function Contact(){
         <motion.div 
         initial={{opacity: 0, y:24}}
         whileInView={{opacity: 1, y:0}}
-        viewport={{once: true, amount:0.2}}
+        viewport={{once: true, amount:0.1}}
         transition={{duration: 0.6}}
         id="contact" className="max-w-[80%] mx-auto ">
 
@@ -80,7 +97,15 @@ function Contact(){
 
             <div className="max-w-full grid grid-col-1 lg:grid-cols-2 mx-auto mt-10">  {/* parent of two cards */}
               
-                            <div className="justify-start items-start flex flex-col max-w-[90%]   "> {/* start of first card*/}
+                            <motion.div
+                            
+                            initial = {isDesktop ? {opacity: 0, x: -80}: {opacity: 0, y: 30}}
+                            whileInView = {isDesktop ? {opacity: 1, x: 0} : {opacity: 1, y: 0}}
+                            viewport = {{once: true, amount: 0.2}}
+                            transition = {collisionSpring}
+                          
+                            
+                            className="justify-start items-start flex flex-col max-w-[90%]   "> {/* start of first card*/}
 
             <div className="flex md:justify-center md:items-center gap-3 top-0 left-0 px-3 py-3 bg-white border-gray-500/80 backdrop-blur border text-black font-extrabold rounded-2xl  items-center justify-center mb-4"> {/* Copy Button start */}
 
@@ -170,9 +195,15 @@ function Contact(){
              </div>
 
 
-            </div>   {/* end of first card */}
+            </motion.div>   {/* end of first card */}
 
-            <div className="mx-auto border border-black lg:w-full w-full px-7 py-6 bg-black font-mono  ">  {/*  start of input card*/}
+            <motion.div 
+            initial = {isDesktop ? {opacity: 0, x: 80} : {opacity: 0, y: 30}}
+            whileInView={isDesktop ? {opacity: 1, x: 0} : {opacity: 1, y: 0}}
+            viewport = {{once: true, amount: 0.2}}
+            transition = {collisionSpring}
+            
+            className="mx-auto border border-black lg:w-full w-full px-7 py-6 bg-black font-mono  ">  {/*  start of input card*/}
 
           <form ref={form} onSubmit={sendEmail} >
            
@@ -225,7 +256,7 @@ function Contact(){
 
           </form>
           
-            </div>   {/*  end of input card*/}
+            </motion.div>   {/*  end of input card*/}
 
 
 

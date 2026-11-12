@@ -90,12 +90,12 @@ function About(){
         transition = {collisionSpring}
         className="lg:max-w-[95%] flex flex-col mx-auto lg:justify-center lg:items-center mt-10 ml-10">
   
-     <img src={MiProfile} className="max-w-[20%] mt-10 mx-auto lg:max-w-[70%] flex justify-center items-center lg:-mt-15"/>
+     <img src={MiProfile} className="max-w-[80%] mt-10 mx-auto lg:max-w-[70%] flex justify-center items-center lg:-mt-15"/>
 
     <div  className="w-full  m-7 mb-0 mt-3 mx-auto flex items-center justify-center flex-col ">
             <div className=" gap-3 flex items-center justify-center flex-col " >
-                <p className="font-semibold font-[poppins] text-zinc-700 text-xl mt-4 ">Frontend Developer</p>
-                <p className="font-semibold font-[poppins] text-[1.1rem] text-zinc-600 -mt-2">Hsu Wint Wah Htet</p>
+                <p className="font-semibold font-[poppins] text-zinc-700 text-xl md:text-2xl mt-4 ">Frontend Developer</p>
+                <p className="font-semibold font-[poppins] text-[1.1rem] text-zinc-600 md:text-[1.3rem] -mt-2">Hsu Wint Wah Htet</p>
             </div>
 
 

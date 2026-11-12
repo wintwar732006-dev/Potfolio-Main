@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from 'motion/react'
 
 const milestones = [
@@ -82,13 +82,30 @@ export default function LearningJourney() {
     setOpenId((prev) => (prev === id ? null : id));
   };
 
+  const [isDesktop, setIsDesktop] = useState(() => 
+  typeof window !== "undefined" ? window.innerWidth >= 768 : true
+  ); 
+
+  useEffect(() => {
+    const checkScreen = () => setIsDesktop(window.innerWidth >= 768); 
+    window.addEventListener("resize", checkScreen); 
+    return () => window.removeEventListener("resize", checkScreen); 
+  }, []); 
+
+  const mobileStackBounce = {
+    type: "spring", 
+    stiffness: 240, 
+    damping: 13, 
+    mass: 1,
+  }
+
   return (
     <motion.section
     initial={{opacity: 0, y:24}}
     whileInView={{opacity: 1, y:0}}
     viewport={{once: true, amount:0.2}}
     transition={{duration: 0.6}}
-    id="Journey" className="w-full mx-auto  lg:mx-auto  px-4 py-16 text-zinc-100 lg:max-w-[80%] max-w-full">
+    id="Journey" className="overflow-x-hidden w-full mx-auto  lg:mx-auto  px-4 py-16 text-zinc-100 lg:max-w-[80%] max-w-full">
       {/* Section Header */}
       <div className="mb-10 space-y-2">
         <div className="mt-10 lg:mx-auto   mx-1 font-mono text-gray-600 text-[0.9rem] ">
@@ -109,13 +126,13 @@ export default function LearningJourney() {
 
           return (
             <motion.div
-            initial = {{opacity: 0, x: 50}}
-            whileInView = {{ opacity: 1, x: 0}}
-            viewport = {{once: true, amount: 0.25}}
-            transition = {{
-              duration: 1, 
-              ease: [0.22, 1, 0.36, 1],
-            }}
+            initial = {isDesktop ? {opacity: 0, x: 50} : {opacity: 0, y: 45}}
+            whileInView = {isDesktop ? {opacity: 1, x: 0} : {opacity: 1, y: 0}}
+            viewport={{once: true, amount: 0.15}}
+            transition = {
+              isDesktop ? {duration: 1, ease: [0.22, 1, 0.36, 1]}
+              : {...mobileStackBounce, delay: item * 0.15}
+            }
               key={item.id}
               className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
                 isOpen
