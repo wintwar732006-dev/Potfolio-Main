@@ -1,58 +1,149 @@
 import { motion } from 'motion/react'
 import mobilePic from '../assets/mobile.png' 
-import {useState} from 'react'
+import { useState, useEffect } from 'react'; 
 
-const category = ["Work", "About", "Projects", "Resources", "Contact"]; 
+const category = [
+    { name: "Home", id: 'home' },  
+    { name: "Skills", id: 'skill' },  
+    { name: "About", id: 'about' },  
+    { name: "Project", id: 'project' },  
+    { name: "Journey", id: 'journey' },  
+]; 
 
+const NavItems = () => {
+    // Section active အတွက် state
+    const [activeId, setActiveId] = useState("home");
+    // Mobile menu အဖွင့်/အပိတ် အတွက် state
+    const [mobileOpen, setMobileOpen] = useState(false);
+    
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        setActiveId(entry.target.id); 
+                    }
+                }); 
+            }, 
+            {
+                rootMargin: "-30% 0px -50% 0px", 
+            }
+        ); 
+        
+        category.forEach((item) => {
+            const section = document.getElementById(item.id); 
+            if (section) observer.observe(section); 
+        }); 
+        
+        return () => observer.disconnect(); 
+    }, []); 
 
-const Navbar = () => {
-    const [active, setActive] = useState(false); 
-
-    const handleToken =  () => {
-       active === true ? setActive(false) : ""
-       active === false ? setActive(true) : ""
+    const handleToken = () => {
+        setMobileOpen(!mobileOpen);
     }
 
     return (
-       
-       <div className="w-full  pt-3  flex flex-col items-center  ">
-         <nav className=' flex justify-between items-center w-full h-15 px-6  m-auto shadow-lg border-black/20  border rounded-[30px] max-w-[80%] fixed top-3 backdrop-blur-md  '>
+        <div className="w-full pt-3 flex flex-col items-center font[poppins]">
+            <nav className='flex justify-between items-center w-full h-15 px-6 m-auto shadow-lg border-black/20 border rounded-[30px] max-w-[80%] fixed top-3 backdrop-blur-md'>
+                <h3 className="font-[poppins] font-extrabold font text-black-600 text-[0.9rem]">&lt;HWWH/&gt;</h3>
+                
+                <ul className="hidden md:flex items-center justify-center gap-4 h-full font-[poppins] text-[0.9rem]">
+                    {category.map((item) => {
+                        const isActive = activeId === item.id;
 
+                        return (
+                            <li key={item.id}>
+                                <a
+                                    href={`#${item.id}`}
+                                    onClick={() => setActiveId(item.id)}
+                                    className={`px-3.5 py-1.5 rounded-xl transition-all duration-300 cursor-pointer select-none ${
+                                        isActive
+                                            ? "font-bold bg-zinc-200/80 dark:bg-zinc-800 text-black dark:text-white shadow-sm"
+                                            : "font-medium text-zinc-500 hover:text-black dark:hover:text-white hover:bg-zinc-100/70 dark:hover:bg-zinc-900/70"
+                                    }`}
+                                >
+                                    {item.name}
+                                </a>
+                            </li>
+                        );
+                    })}
+                </ul>
 
-          <h3  className=" font-[poppins] font-extrabold font text-black-600 text-[0.9rem] ">&lt;HWWH/&gt;</h3>
-           <ul className="  hidden flex-rows  lg:flex  gap-5 justify-center items-center h-full md:flex">
-            {
-                category.map((element, index) => {
-                    return (<li className="font-medium text-[0.9rem]  " key={index}>{element}</li>)
-                })
-            }
-           </ul>
-            <button className="hidden md:flex lg:flex font-medium text-[0.9rem] bg-black  text-white  rounded-[30px]  px-8 py-2 lg:px-15 lg:py-3 md:px-10 md:py-2 ">Contact</button>
-            <img  className="w-13 lg:hidden md:hidden bg-white rounded" src={mobilePic} onClick={() => handleToken()}/>
-           
+                <a href="#contact" className="hidden md:flex lg:flex font-medium text-[0.9rem] bg-black text-white rounded-[30px] px-8 py-2 lg:px-15 lg:py-3 md:px-10 md:py-2">
+                    Contact
+                </a>
+                
+                <img className="w-13 lg:hidden md:hidden bg-white rounded" src={mobilePic} onClick={handleToken} />
+            </nav>
 
+            {mobileOpen === true ? (
+                <motion.div
+                    initial={{ opacity: 0, y: -100 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="absolute top-20 max-w-[80%] right-14 lg:hidden md:hidden"
+                >
+                    <div className="w-fit bg-gray-100/50 p-8 list-none gap-3 rounded-[30px] flex flex-col items-end">
+                        {category.map((element, index) => {
+                            return (
+                                <li className="font-medium text-[0.9rem]" key={index}>
+                                    <a href={`#${element.id}`} onClick={() => setMobileOpen(false)}>
+                                        {element.name}
+                                    </a>
+                                </li>
+                            )
+                        })}
+                    </div>
+                </motion.div>
+            ) : ""}
 
+            {mobileOpen === true ? (
+    <motion.div
+        initial={{ opacity: 0, y: -100 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="fixed top-20 max-w-[80%] right-14 z-50 lg:hidden md:hidden"
+    >
+        <div className="w-fit bg-gray-100/80 backdrop-blur-md p-8 list-none gap-3 rounded-[30px] flex flex-col items-end shadow-lg border border-black/10">
+            {category.map((element, index) => {
+                const isActive = activeId === element.id;
 
+                return (
+                    <li key={index}>
+                        <a
+                            href={`#${element.id}`}
+                            onClick={() => {
+                                setActiveId(element.id);
+                                setMobileOpen(false);
+                            }}
+                            className={`text-[0.9rem] px-3.5 py-1.5 rounded-xl transition-all duration-300 block ${
+                                isActive
+                                    ? "font-bold bg-zinc-200/90 text-black shadow-sm"
+                                    : "font-medium text-zinc-600 hover:text-black hover:bg-zinc-200/50"
+                            }`}
+                        >
+                            {element.name}
+                        </a>
+                    </li>
+                );
+            })}
 
-
-        </nav>
-
-        {
-            active === true ? <motion.div
-             initial = {{opacity:0, y:-100}}
-             animate = {{opacity:1, y:0}}
-            className="absolute  top-20  max-w-[80%]   right-14 lg:hidden md:hidden">
-            <div className="w-fit bg-gray-100/50 p-8 list-none gap-3 rounded-[30px] flex flex-col items-end">
-                 {
-                category.map((element, index) => {
-                    return (<li className="font-medium text-[0.9rem]  " key={index}>{element}</li>)
-                })
-            }
-            </div>
-        </motion.div> : "" 
-        }
-       </div>
+            {/* Mobile menu ထဲမှာ Contact link ပါ တစ်ခါတည်း ထည့်ချင်ရင် */}
+            <li className="mt-1">
+                <a
+                    href="#contact"
+                    onClick={() => {
+                        setActiveId("contact");
+                        setMobileOpen(false);
+                    }}
+                    className="font-medium text-[0.9rem] bg-black text-white rounded-[30px] px-6 py-2 inline-block"
+                >
+                    Contact
+                </a>
+            </li>
+        </div>
+    </motion.div>
+) : ""}
+        </div>
     )
 }
 
-export default Navbar
+export default NavItems

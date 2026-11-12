@@ -53,7 +53,7 @@ function Contact(){
     
 
     return(
-        <div className="max-w-[80%] mx-auto ">
+        <div id="contact" className="max-w-[80%] mx-auto ">
 
             <p  className="mt-10  font-mono text-gray-600 text-[0.9rem] ">&lt;contact/&gt;</p>
             <h1 className=" font-[poppins] mt-4 text-3xl font-extrabold text-gray-900 max-w-[80%]">Contact Me</h1>

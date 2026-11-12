@@ -1,7 +1,7 @@
 function MicroBar(){
     return(
   <div>
-    <div className="max-w-[80%] mt-10 m-auto">
+    <div className="lg:max-w-[80%] mt-10 lg:m-auto max-w-full">
         <hr className="text-gray-200"/>
         <div className="mt-3 w-full  px-3 ">
             <span className="font-mono text-gray-600 text-[0.9rem]">Core Stack: </span>

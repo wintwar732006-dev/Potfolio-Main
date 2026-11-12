@@ -8,6 +8,8 @@ import About from './Components/about.jsx'
 import InteractiveDots from './Components/InteractiveDots.jsx'
 import ProjectsSection from './Components/ProjectsSection.jsx'
 import Contact from './Components/contact.jsx'
+import LearningJourney from './Components/learning.jsx'
+import Footer from './Components/footer.jsx'
 
 const App = () => {
 
@@ -20,12 +22,15 @@ const App = () => {
       />  
             <div className="relative z-10 ">
                 <Nav/>
-                <Home/>
+                <Home id="home"/>
                 <MicroBar/>
-                <Skill/>
-                <About />
-                <ProjectsSection/>
-                <Contact/>
+                <Skill id="skill"/>
+                <About id="about"/>
+                <ProjectsSection id="project"/>
+                <LearningJourney/>
+                <Contact id="contact"/>
+
+                <Footer/>
             </div>
         </div>
     )

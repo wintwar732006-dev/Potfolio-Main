@@ -24,16 +24,16 @@ const SkillIcon = [
 
 function Skill() {
   return (
-    <div>
-      <p className="mt-10 ml-[10%] font-mono text-gray-600 text-[0.9rem]">
+    <div id="skill" >
+      <p className="mt-10 lg:ml-[10%] font-mono text-gray-600 text-[0.9rem] ml-4">
         &lt;CAPABILITIES/&gt;
       </p>
 
-      <h1 className="ml-[10%] font-[poppins] mt-4 text-3xl font-bold text-gray-900">
+      <h1 className="lg:ml-[10%] ml-4 font-[poppins] mt-4 text-3xl font-bold text-gray-900">
         Technical Skills
       </h1>
 
-      <div className="max-w-[80%] bg-black rounded-2xl my-10 mx-auto pb-5">
+      <div className="lg:max-w-[80%] max-w-full bg-black mx-4 rounded-2xl my-10 lg:mx-auto pb-5">
         <div className="p-5">
           <div>
             <p className="mt-10 ml-[10%] font-mono text-white text-[0.9rem] selection:bg-white selection:text-black">
