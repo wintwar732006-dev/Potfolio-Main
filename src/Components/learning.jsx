@@ -85,10 +85,10 @@ export default function LearningJourney() {
     <section id="Journey" className="w-full  lg:mx-auto  px-4 py-16 text-zinc-100 lg:max-w-[80%] max-w-full">
       {/* Section Header */}
       <div className="mb-10 space-y-2">
-        <div className="mt-10 lg:mx-auto -mx-4  left-2 font-mono text-gray-600 text-[0.9rem] ">
+        <div className="mt-10 lg:mx-auto -mx-4  mx-2 font-mono text-gray-600 text-[0.9rem] ">
           <span>&lt;LEARNING/&gt;</span>
         </div>
-        <h2 className="font-[poppins] mt-4 text-3xl font-bold lg:mx-auto left-2  text-gray-900">
+        <h2 className="font-[poppins] mt-4 text-3xl font-bold lg:mx-auto mx-2  text-gray-900">
           2026 Journey &amp; Milestones
         </h2>
         <p className=" font-[poppins] text-[1rem] text-gray-700 lg:text[2rem]  mt-5 left-0">
