@@ -38,7 +38,7 @@ function About(){
         <h1 className=" ml-4 font-[poppins] mt-4 text-3xl font-bold text-gray-900 max-w-[80%]">About Me
         </h1>
 
-        <div className="px-6 mb-7 grid grid-cols-1 md:grid-cols-2 gap-3 items-center md:max-w-full mx-auto max-w-full">
+        <div className="px-6 mb-7 grid grid-cols-1 md:grid-cols-2 gap-3 mt-3 items-center md:max-w-full mx-auto max-w-full">
 
          <motion.div 
          
@@ -67,7 +67,7 @@ function About(){
               challenging for me, but I'm trying to learn it so I can become a 
               full-stack developer. Currently, I'm majoring in <span className="font-[poppins] text-black font-bold text-[1.1rem]">Computer 
               Science at DGU</span> and also studying <span className="font-[poppins] text-black font-bold text-[1.1rem]">B.A. Law at YUDE (CHRD Program)</span>.
-               I want to be someone who can contribute to society with my skills.ociety with my skills.  </p>
+               I want to be someone who can contribute to society with my skills.  </p>
 
             
 
