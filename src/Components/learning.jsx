@@ -9,10 +9,10 @@ const milestones = [
     title: "Visual Prototyping & Custom Layouts",
     category: "Design to Web • Framer",
     summary:
-    "Got my start in web design and development using Framer. Instead of using pre-built templates, I focused on learning layout mechanics from the ground up and shipped 4 custom sites.",
+    "I started making websites with Framer using pre-made layouts and templates. Later, I shifted to making a website with Framer from scratch.",
     keyPoints: [
-    "Built responsive layouts and grids directly inside Framer.",
-    "Created 4 original, template-free interactive projects from scratch.",
+    "Built responsive layouts and grids directly with Framer.",
+    "Created 4 projects with Framer.",
 
     ],
     stack: ["Framer", "Visual Prototyping", "Wireframing", "UI Design"]
@@ -21,16 +21,17 @@ const milestones = [
     id: "may-jul-2026",
     period: "May – Jul 2026",
     status: "Completed",
-    title: "Core Web Foundations & Logic",
+    title: " Web Foundations & Logic",
     category: "Frontend Foundations • HTML, CSS, JavaScript",
     summary:
-    "Shifted from no-code tools to hand-coding websites from scratch—focusing on HTML and CSS structure in May, followed by JavaScript logic in July.",
+    "First, I learned HTML and a week later, CSS. After that, I started learning JavaScript, which is the most important thing in web development. ",
     keyPoints: [
     "Practiced semantic HTML5, CSS Flexbox/Grid layouts, and responsive sizing.",
-    "Worked with core JavaScript logic, async data handling, and DOM updates.",
+    "Worked with core JavaScript logic.",
      ],
     stack: ["HTML5", "CSS3", "JavaScript", "DOM Manipulation"]
   },
+  /*
   {
     id: "aug-2026",
     period: "Aug 2026",
@@ -44,18 +45,18 @@ const milestones = [
      "Practiced rapid debugging, team collaboration, and pitching our final product.",
     ],
     stack: ["Hackathon", "Rapid Prototyping", "Teamwork", "UI/UX"]
-  },
+  }, */
   {
     id: "oct-2026",
     period: "Oct 2026",
     status: "Accelerated",
-    title: "Modern Ecosystem & Component-Driven Architecture",
-    category: "Frontend Engineering • React, Tailwind, Git",
+    title: "Modern Web Development",
+    category: "Frontend Engineering • React, Tailwind CSS, Git",
     summary:
-     "Spent my university break diving deeper into JavaScript and transitioning into component-based development with React, Tailwind CSS, and GitHub.",
+     "I spent my school break days by learning Tailwind CSS and React. And then, I made some projects with them.",
     keyPoints: [
-    "Styled clean, mobile-first layouts quickly with Tailwind CSS.",
-    "Built modular React components using props and state management.",
+    "Made websites with Tailwind CSS.",
+    "Learned React JS.",
     "Set up standard Git version control and repository workflows on GitHub.",
      ],
     stack: ["React.js", "Tailwind CSS", "JavaScript (ES6+)", "Git", "GitHub"]
@@ -64,12 +65,12 @@ const milestones = [
     id: "present-2026",
     period: "Present (Late 2026)",
     status: "In Progress",
-    title: "Full-Stack Horizon & Scalable Architecture",
+    title: "To become Full-Satck",
     category: "Continuous Growth • Engineering Depth",
     summary:
-  "Expanding my skills beyond frontend development into backend services, databases, and API integration so I can build complete full-stack applications.",
+    "I'm still learning database, API, and also other things for Backend development.",
 keyPoints: [
-  "Exploring backend fundamentals, database structure, and REST API connections.",
+  "Exploring backend fundamentals.",
   "Focusing on better UI performance, cleaner code structure, and best practices.",
 ],
     stack: ["Full-Stack Architecture", "REST APIs", "Modern Tooling", "Continuous Growth"]
