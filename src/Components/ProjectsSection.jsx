@@ -79,22 +79,31 @@ function ProjectsSection(){
 
                         <div className="flex w-full mt-5">
 
-                                <a
+                                <motion.a
+
+                                 whileHover = {{ scale: 1.04, y: -2}}
+                                 whileTap = {{scale: 0.94}}
+                                 transition = {{type: "spring", stiffness: 450, damping: 18}}
                                    href={project.links.live}
                                    target="_blank"
                                    rel="noopener noreferrer"
                                    className="inline-flex items-center md:text-[0.8rem] justify-center gap-2 rounded-xl bg-white px-3 py-1 font-['Poppins'] text-[0.6rem] font-extrabold text-black transition-all hover:bg-neutral-200 lg:text-[0.8rem]"
                                 >
                                      Live Demo &rarr;
-                                </a>
+                                </motion.a>
 
                         
-                                <div className="flex justify-center  items-center py-1 rounded-xl text-black mx-2 gap-2 px-3 bg-white">
+                                <motion.div 
+                                 whileHover = {{ scale: 1.04, y: -2}}
+                                 whileTap = {{scale: 0.94}}
+                                 transition = {{type: "spring", stiffness: 450, damping: 18}}
+                                
+                                className="flex justify-center  items-center py-1 rounded-xl text-black mx-2 gap-2 px-3 bg-white">
                                     <img src={github} className="w-4 h-4"/>
                                     <button><a href={project.links.githubUrl} className="font-[poppins] font-extrabold text-[0.6rem] lg:text-[0.8rem] md:text-[0.8rem]">
                                     GitHub
                                     </a></button>
-                                    </div>
+                                    </motion.div>
                        </div>
 
                 </motion.div>

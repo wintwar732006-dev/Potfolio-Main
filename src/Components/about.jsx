@@ -1,6 +1,8 @@
 import MiProfile from '../assets/profile.png';
 import { motion } from 'motion/react'
 import { useState, useEffect } from "react"; 
+import { useRef } from 'react'; 
+import SpotlightCursor from '../Components/spotLightCursor'; 
 
 function About(){
 
@@ -22,6 +24,8 @@ function About(){
         mass: 1.1, 
     }; 
 
+    const paragraphRef = useRef(null); 
+    const [showSpotlight, setShowSpotlight] = useState(false); 
     return(
       <motion.div
        initial={{opacity: 0, y:24}}
@@ -43,14 +47,30 @@ function About(){
          viewport = {{once: true, amount: 0.25}}
          transition = {collisionSpring}
          className="flex flex-col lg:max-w-full max-w-full mx-auto">
-            <p className=" font-[poppins] text-[1rem] text-gray-700 lg:text[2rem] px-5"> I’m <span className="font-bold text-[1.1rem] text-gray-800">Hsu Wint Wah Htet</span> — a frontend developer dedicated to building polished,
-          responsive interfaces where clean design meets performant code.
-         As a largely <span className="font-bold text-[1.1rem] text-gray-800">self-taught builder</span>, I thrive on diving deep into frontend architectures, 
-         crafting modular UI systems from scratch, and collaborating under pressure in tech sprint environments 
-         to solve practical problems. Currently pursuing a dual degree in <span className="font-bold text-[1.1rem] text-gray-800">Computer Science at DGU and Law at YUDE</span>,
-         I bridge the gap between technical execution and structural thinking — combining algorithmic problem-solving with a
-         conscious understanding of software governance.Whether engineering micro-interactions or architecting multi-device 
-         layouts, my goal is always the same: delivering thoughtful, resilient digital products with zero visual bloat. </p>
+           
+           
+            {showSpotlight && <SpotlightCursor/>}
+
+              <p 
+              config = {{
+                spotlightSize: 95,          // ၁။ Size ကို 200 ကနေ 135 သို့ သေးလိုက်ပါတယ်
+                spotlightIntensity: 0.45,    // ၂။ အလင်းပြင်းအားကို 0.8 ကနေ 0.45 သို့ လျှော့ထားပါတယ်
+                glowColor: "253, 224, 71"
+              }}
+              onMouseEnter = {() => setShowSpotlight(true)}
+              onMouseLeave = {() => setShowSpotlight(false)}
+              className=" font-[poppins] text-[1rem] text-gray-700 lg:text[2rem] px-5"> I’m <span className="font-bold text-[1.1rem] text-gray-800">Hsu Wint Wah Htet</span> — a frontend developer dedicated to building polished,
+              responsive interfaces where clean design meets performant code.
+              As a largely <span className="font-bold text-[1.1rem] text-gray-800">self-taught builder</span>, I thrive on diving deep into frontend architectures, 
+              crafting modular UI systems from scratch, and collaborating under pressure in tech sprint environments 
+              to solve practical problems. Currently pursuing a dual degree in <span className="font-bold text-[1.1rem] text-gray-800">Computer Science at DGU and Law at YUDE</span>,
+              I bridge the gap between technical execution and structural thinking — combining algorithmic problem-solving with a
+              conscious understanding of software governance.Whether engineering micro-interactions or architecting multi-device 
+              layouts, my goal is always the same: delivering thoughtful, resilient digital products with zero visual bloat. </p>
+
+            
+
+
 
          <div className="m-3 mt-7 bg-black p-5 rounded-xl text-white  selection:text-black">
         <p className="  font-mono text-white text-[0.9rem] ">&lt; KEY VALUES &gt; </p>

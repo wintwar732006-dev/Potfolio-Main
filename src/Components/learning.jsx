@@ -9,10 +9,11 @@ const milestones = [
     title: "Visual Prototyping & Custom Layouts",
     category: "Design to Web • Framer",
     summary:
-      "Embarked on web development by mastering Framer canvas. Bypassed pre-made templates to architect bespoke visual systems and shipped 4 custom interactive projects.",
+    "Got my start in web design and development using Framer. Instead of using pre-built templates, I focused on learning layout mechanics from the ground up and shipped 4 custom sites.",
     keyPoints: [
-      "Designed responsive grid and layout systems directly within Framer canvas.",
-      "Engineered 4 distinct, template-free custom projects from scratch."
+    "Built responsive layouts and grids directly inside Framer.",
+    "Created 4 original, template-free interactive projects from scratch.",
+
     ],
     stack: ["Framer", "Visual Prototyping", "Wireframing", "UI Design"]
   },
@@ -23,11 +24,11 @@ const milestones = [
     title: "Core Web Foundations & Logic",
     category: "Frontend Foundations • HTML, CSS, JavaScript",
     summary:
-      "Transitioned from visual prototyping into core engineering fundamentals. Built clean semantic structures with HTML/CSS in May, followed by deep diving into core JavaScript logic in July.",
+    "Shifted from no-code tools to hand-coding websites from scratch—focusing on HTML and CSS structure in May, followed by JavaScript logic in July.",
     keyPoints: [
-      "Mastered semantic HTML5 structures, modern CSS flexbox/grid, and fluid typography.",
-      "Practiced imperative programming logic, asynchronous flow, and DOM manipulation in vanilla JavaScript."
-    ],
+    "Practiced semantic HTML5, CSS Flexbox/Grid layouts, and responsive sizing.",
+    "Worked with core JavaScript logic, async data handling, and DOM updates.",
+     ],
     stack: ["HTML5", "CSS3", "JavaScript", "DOM Manipulation"]
   },
   {
@@ -37,10 +38,10 @@ const milestones = [
     title: "Hackathon Sprint & Real-Time Collaboration",
     category: "Intense Sprint • Rapid Prototyping",
     summary:
-      "Competed in a fast-paced hackathon sprint, turning conceptual requirements into functional prototypes under tight time constraints through effective team collaboration.",
+    "Collaborated with a team during an intense hackathon sprint to take a concept from idea to a working prototype on a strict deadline.",
     keyPoints: [
-      "Architected and deployed interactive UI features under strict deadline constraints.",
-      "Sharpened rapid problem-solving, cross-functional teamwork, and product pitch delivery."
+    "Developed and shipped responsive UI components under tight time limits.",
+     "Practiced rapid debugging, team collaboration, and pitching our final product.",
     ],
     stack: ["Hackathon", "Rapid Prototyping", "Teamwork", "UI/UX"]
   },
@@ -51,12 +52,12 @@ const milestones = [
     title: "Modern Ecosystem & Component-Driven Architecture",
     category: "Frontend Engineering • React, Tailwind, Git",
     summary:
-      "Leveraged post-term university break to level up JavaScript proficiency, moving into modern component-driven engineering with Tailwind CSS, React.js, and standardized Git/GitHub workflows.",
+     "Spent my university break diving deeper into JavaScript and transitioning into component-based development with React, Tailwind CSS, and GitHub.",
     keyPoints: [
-      "Engineered mobile-first, highly responsive web interfaces using Tailwind CSS.",
-      "Built modular component hierarchies, props-driven data flows, and state handling in React.js.",
-      "Established standard Git version control routines, branching strategies, and GitHub repositories."
-    ],
+    "Styled clean, mobile-first layouts quickly with Tailwind CSS.",
+    "Built modular React components using props and state management.",
+    "Set up standard Git version control and repository workflows on GitHub.",
+     ],
     stack: ["React.js", "Tailwind CSS", "JavaScript (ES6+)", "Git", "GitHub"]
   },
   {
@@ -66,11 +67,11 @@ const milestones = [
     title: "Full-Stack Horizon & Scalable Architecture",
     category: "Continuous Growth • Engineering Depth",
     summary:
-      "Expanding outward from solid frontend foundations to master backend services, API designs, databases, and modern full-stack workflows to become an end-to-end builder.",
-    keyPoints: [
-      "Exploring scalable server architectures, database modeling, and robust RESTful API integrations.",
-      "Refining component performance, code modularity, and production-grade engineering standards."
-    ],
+  "Expanding my skills beyond frontend development into backend services, databases, and API integration so I can build complete full-stack applications.",
+keyPoints: [
+  "Exploring backend fundamentals, database structure, and REST API connections.",
+  "Focusing on better UI performance, cleaner code structure, and best practices.",
+],
     stack: ["Full-Stack Architecture", "REST APIs", "Modern Tooling", "Continuous Growth"]
   }
 ];
