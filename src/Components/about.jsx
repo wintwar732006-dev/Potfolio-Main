@@ -38,7 +38,7 @@ function About(){
         <h1 className=" ml-4 font-[poppins] mt-4 text-3xl font-bold text-gray-900 max-w-[80%]">About Me
         </h1>
 
-        <div className="px-6 my-7 grid grid-cols-1 md:grid-cols-2 gap-3 items-center md:max-w-full mx-auto max-w-full">
+        <div className="px-6 mb-7 grid grid-cols-1 md:grid-cols-2 gap-3 items-center md:max-w-full mx-auto max-w-full">
 
          <motion.div 
          
@@ -53,20 +53,21 @@ function About(){
 
               <p 
               config = {{
-                spotlightSize: 95,          // ၁။ Size ကို 200 ကနေ 135 သို့ သေးလိုက်ပါတယ်
-                spotlightIntensity: 0.45,    // ၂။ အလင်းပြင်းအားကို 0.8 ကနေ 0.45 သို့ လျှော့ထားပါတယ်
-                glowColor: "253, 224, 71"
+                 spotlightSize: 130,          
+                 spotlightIntensity: 0.55,    
+                  fadeSpeed: 0.12,
+                 glowColor: '253, 224, 71',  
+                 pulseSpeed: 2000
               }}
               onMouseEnter = {() => setShowSpotlight(true)}
               onMouseLeave = {() => setShowSpotlight(false)}
-              className=" font-[poppins] text-[1rem] text-gray-700 lg:text[2rem] px-5"> I’m <span className="font-bold text-[1.1rem] text-gray-800">Hsu Wint Wah Htet</span> — a frontend developer dedicated to building polished,
-              responsive interfaces where clean design meets performant code.
-              As a largely <span className="font-bold text-[1.1rem] text-gray-800">self-taught builder</span>, I thrive on diving deep into frontend architectures, 
-              crafting modular UI systems from scratch, and collaborating under pressure in tech sprint environments 
-              to solve practical problems. Currently pursuing a dual degree in <span className="font-bold text-[1.1rem] text-gray-800">Computer Science at DGU and Law at YUDE</span>,
-              I bridge the gap between technical execution and structural thinking — combining algorithmic problem-solving with a
-              conscious understanding of software governance.Whether engineering micro-interactions or architecting multi-device 
-              layouts, my goal is always the same: delivering thoughtful, resilient digital products with zero visual bloat. </p>
+              className=" font-[poppins] text-[1rem] text-gray-700 lg:text[2rem] px-5"> 
+             I'm <span className="font-[poppins] text-black font-bold text-[1.1rem]">Hsu Wint War Htet</span>, a frontend developer who is still learning. 
+             I like making clean, modern websites. Backend development is still
+              challenging for me, but I'm trying to learn it so I can become a 
+              full-stack developer. Currently, I'm majoring in <span className="font-[poppins] text-black font-bold text-[1.1rem]">Computer 
+              Science at DGU</span> and also studying <span className="font-[poppins] text-black font-bold text-[1.1rem]">B.A. Law at YUDE (CHRD Program)</span>.
+               I want to be someone who can contribute to society with my skills.ociety with my skills.  </p>
 
             
 
@@ -133,13 +134,15 @@ function About(){
 
             </div>
 
+
+           {/*
            <div className="max-w-[90%] flex justify-center items-center mt-5  lg:block">
                  <p className="font-mono text-xl text-zinc-700 hidden lg:block"><i><b>"Aesthetic discipline is not the addition of decorative layers, 
                         but the rigorous subtraction of visual noise."</b>
                         </i></p>
 
            </div>
-
+           */}
 
 
 

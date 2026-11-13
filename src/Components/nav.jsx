@@ -69,7 +69,7 @@ const NavItems = () => {
                                     href={`#${item.id}`}
                                     onClick={() => setActiveId(item.id)}
                                     className={`relative z-10 px-3.5 py-1.5 rounded-xl transition-colors duration-200 cursor-pointer select-none block ${
-                                        isActive ? "font-bold text-black" : "font-medium text-zinc-500 hover-text-black"
+                                        isActive ? "font-bold text-black" : "font-bold text-zinc-500 hover:text-black"
                                     }`}
                                 >
                                     {item.name}
