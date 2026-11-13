@@ -65,7 +65,7 @@ const milestones = [
     id: "present-2026",
     period: "Present (Late 2026)",
     status: "In Progress",
-    title: "To become Full-Satck",
+    title: "To become Full-Stack",
     category: "Continuous Growth • Engineering Depth",
     summary:
     "I'm still learning database, API, and also other things for Backend development.",
